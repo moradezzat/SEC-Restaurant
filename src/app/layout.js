@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 config.autoAddCss = false;
 
 // const poppins = Poppins({
@@ -68,6 +70,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${poppins.variable} ${cairo.variable} font-poppins antialiased`}>
         {children}
+        <SpeedInsights />
+        <Analytics/>
       </body>
     </html>
   );
