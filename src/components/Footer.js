@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="footer-section">
                         <h3 className="text-[#e74c3c] text-[1.1rem] mb-4 text-center font-semibold cursor-default">Contact</h3>
                         <ul className="text-center list-none">
-                            <li className="mb-[0.5rem]"><a href="mailto:official.sec@outlook.com.com" className="text-white no-underline transition-colors duration-300 ease inline-block hover:text-[#e74c3c]">official.sec@outlook.com</a></li>
+                            <li className="mb-[0.5rem]"><a href="mailto:official.sec@outlook.com" className="text-white no-underline transition-colors duration-300 ease inline-block hover:text-[#e74c3c]">official.sec@outlook.com</a></li>
                             <li className="mb-[0.5rem]"><a href="tel:+201028154813" className="text-white no-underline transition-colors duration-300 ease inline-block hover:text-[#e74c3c]">+20 10 28154813</a></li>
                         </ul>
                     </div>

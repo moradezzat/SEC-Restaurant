@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ReviewCard from '../components/Review';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Offers = [
   { id: 1, Title: 'مكرونة بالكبدة', Content: 'طاجن مكرونة بالكبدة', Price: '45.00', ImgSrc: '/assets/drinks.png', ImgAlt: 'مكرونة بالكبدة' },
