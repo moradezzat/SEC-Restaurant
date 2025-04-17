@@ -1,6 +1,10 @@
+"use client";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ReviewCard from '../components/Review';
+import OfferCard from '@/components/Offer';
+import { useState, useEffect } from 'react';
+import MenuModal from '@/components/MenuModal';
 
 const Offers = [
   { id: 1, Title: 'مكرونة بالكبدة', Content: 'طاجن مكرونة بالكبدة', Price: '45.00', ImgSrc: '/assets/drinks.png', ImgAlt: 'مكرونة بالكبدة' },
@@ -15,9 +19,39 @@ const Reviews = [
 ]
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const displayMenuModal = () => {
+    setIsMenuOpen(true);
+  };
+  
+  const scrollToOffers = () => {
+    // Wait for next frame to ensure all elements have rendered
+    requestAnimationFrame(() => {
+      const offersSection = document.getElementById('offers');
+      if (!offersSection) return;
+      
+      // Get the section's position relative to the top of the document
+      const sectionTop = offersSection.getBoundingClientRect().top + window.scrollY;
+      
+      // Subtract 50px to add padding above the section
+      const scrollPosition = sectionTop - 50;
+      
+      // Perform the scroll
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+      });
+    });
+  };
+
   return (
     <main className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden'>
       <Navbar/>
+      <MenuModal 
+        isOpen={isMenuOpen} 
+        onClose={() => setIsMenuOpen(false)} 
+      />
       <main className='max-w-[1200px] mx-auto mb-8 px-8 text-center w-full'>
 
         {/* Hero Section */}
@@ -29,19 +63,18 @@ export default function Home() {
           </p>
 
           <div className='btnContainer flex gap-6 justify-center mb-8'>
-            <button className='btn primary'>View Our Menu</button>
-            <button className='btn secondary'>Special Offers</button>
+            <button className='btn primary' onClick={displayMenuModal}>View Our Menu</button>
+            <button className='btn secondary' onClick={scrollToOffers}>Special Offers</button>
           </div>
         </section>
 
         {/* Offers Section */}
-        <section className='mt-40 py-8'>
+        <section id="offers" className='mt-40 py-8'>
           <h2 className='text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto'>
             {/* {Offers.map((item) => (
               <OfferCard key={item.id} Title={item.Title} Content={item.Content} Price={item.Price} ImgSrc={item.ImgSrc} ImgAlt={item.ImgAlt} />
             ))} */}
-            
           </div>
         </section>
 
