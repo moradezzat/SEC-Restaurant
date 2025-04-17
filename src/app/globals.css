@@ -277,10 +277,8 @@
       transform: translateX(0); /* End at the original position */
     }
 }
-  
-.animate-slideLeft {
-    animation: slideFromRight 0.3s ease-out forwards;
-}
+
+
   
 
 .animate-slideUp {

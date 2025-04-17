@@ -5,9 +5,27 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
 
 export default function Sidenav({ isOpen, onClose }) {
-    const [selectedMode, setSelectedMode] = useState('light'); // Default = Light Mode
-    const [language, setLanguage] = useState('en'); // Default = English
+    const [selectedMode, setSelectedMode] = useState('light');
+    const [language, setLanguage] = useState('en');
     const [isContactOpen, setIsContactOpen] = useState(false);
+
+    // 👇 NEW STATES FOR ANIMATION HANDLING
+    const [showSidebar, setShowSidebar] = useState(isOpen);
+    const [isClosing, setIsClosing] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            setShowSidebar(true);
+            setIsClosing(false);
+        } else if (showSidebar) {
+            // Trigger close animation
+            setIsClosing(true);
+            setTimeout(() => {
+                setShowSidebar(false);
+                setIsClosing(false);
+            }, 300); // match duration of animation
+        }
+    }, [isOpen]);
 
     const selectMode = (option) => {
         setSelectedMode(option);
@@ -27,16 +45,11 @@ export default function Sidenav({ isOpen, onClose }) {
         const savedTheme = localStorage.getItem('theme');
         const savedLanguage = localStorage.getItem('language');
 
-        if (savedTheme) {
-            setSelectedMode(savedTheme);
-        }
-
-        if (savedLanguage) {
-            setLanguage(savedLanguage);
-        }
+        if (savedTheme) setSelectedMode(savedTheme);
+        if (savedLanguage) setLanguage(savedLanguage);
     }, []);
 
-    if (!isOpen) return null;
+    if (!showSidebar) return null;
 
     return (
         <>
@@ -45,7 +58,7 @@ export default function Sidenav({ isOpen, onClose }) {
                 onClose={() => setIsContactOpen(false)} 
             />
             <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex z-[48] transition-all duration-300 ease" onClick={onClose} />
-                <div className="Sidenav fixed top-[68px] right-[0%] w-[300px] h-full bg-white z-[49] transition-all duration-300 ease shadow-md flex flex-col animate-slideLeft">
+                <div className={`Sidenav fixed top-[68px] right-[0%] w-[300px] h-full bg-white z-[49] transition-all duration-300 ease shadow-md flex flex-col ${ isClosing ? 'animate-slideOutFromLeft' : 'animate-slideInFromRight' }`}>
                     <div className="flex justify-between items-center p-6 border-b border-b-[#eeeeee] bg-white sticky top-0 z-50">
                         <h2 className="m-0 text-[#2c3e50] text-[1.5rem] font-semibold">Settings</h2>
                         <button 
