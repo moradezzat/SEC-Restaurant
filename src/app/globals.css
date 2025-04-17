@@ -269,18 +269,6 @@
     }
 }
 
-@keyframes slideFromRight {
-    0% {
-      transform: translateX(100%); /* Start off the screen to the right */
-    }
-    100% {
-      transform: translateX(0); /* End at the original position */
-    }
-}
-
-
-  
-
 .animate-slideUp {
     animation: slideUp 0.5s ease forwards;
 }
