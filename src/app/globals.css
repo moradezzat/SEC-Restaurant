@@ -320,6 +320,10 @@
         width: 380px;
         font-size: 1.2rem;
     }
+
+    .hero-section {
+        padding-top: 10rem;
+    }
 }
 
 @media screen and (max-width: 443px) {

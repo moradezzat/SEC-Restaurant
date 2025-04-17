@@ -21,7 +21,7 @@ export default function Home() {
       <main className='max-w-[1200px] mx-auto mb-8 px-8 text-center w-full'>
 
         {/* Hero Section */}
-        <section className='overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
+        <section className='hero-section overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
           <h1 className='title text-[2.5rem] text-[#2c3e50] mb-6 font-semibold'>Welcome to SEC Restaurant</h1>
           <p className='text-[1.1rem] text-[#666666] max-w-[800px] mx-auto mb-8 leading-[1.6]'>
             Experience the best fast food in town! We serve delicious burgers, crispy fries, and refreshing drinks.
