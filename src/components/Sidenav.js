@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
 
 export default function Sidenav({ isOpen, onClose }) {
@@ -64,7 +64,7 @@ export default function Sidenav({ isOpen, onClose }) {
                         <button 
                             className="bg-none border-none text-[2rem] text-[#95a5a6] cursor-pointer p-0 leading-none w-[40px] h-[40px] flex items-center justify-center rounded-[50%] transition-all duration-300 ease hover:text-[#e74c3c] hover:bg-[#e74c3c1a] font-mono"
                             onClick={onClose}>
-                            <FontAwesomeIcon icon={faX} size='2xs'/>
+                            <FontAwesomeIcon icon={faXmark} size='2xs'/>
                         </button>
                     </div>
                     <div className="p-6 overflow-y-auto flex-1">
