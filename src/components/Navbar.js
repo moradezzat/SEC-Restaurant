@@ -1,8 +1,8 @@
-'use client';
+"use client";
 import { useState } from 'react';
 import MenuModal from './MenuModal';
 import ContactModal from './ContactModal';
-import Sidenav from './Sidenav'
+import Sidenav from './Sidenav';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,8 +27,8 @@ export default function Navbar() {
                 <div className="text-[1.5rem] font-semibold text-[#e74c3c] cursor-default">SEC Restaurant</div>
                 <div className="aContainer flex gap-8 items-center">
                     <a href="/" className="no-underline text-[#333333] font-medium transition-colors duration-300 ease-in-out hover:text-[#e74c3c]">Home</a>
-                    <a href="#" onClick={displayMenuModal} className="no-underline text-[#333333] font-medium transition-colors duration-300 ease-in-out hover:text-[#e74c3c]">Menu</a>
-                    <a href="#" onClick={displayContactModal} className="no-underline text-[#333333] font-medium transition-colors duration-300 ease-in-out hover:text-[#e74c3c]">Contact</a>
+                    <a onClick={displayMenuModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-colors duration-300 ease-in-out hover:text-[#e74c3c]">Menu</a>
+                    <a onClick={displayContactModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-colors duration-300 ease-in-out hover:text-[#e74c3c]">Contact</a>
                 </div>
                  <div className="flex flex-col justify-between w-[30px] h-[21px] cursor-pointer ml-8" onClick={displaySidenav}> 
                     <span className='block ml-auto w-full h-[3px] bg-[#e74c3c] rounded-[3px] transition-all duration-300 ease-in-out'></span>
