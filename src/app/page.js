@@ -12,15 +12,16 @@ import { useState } from 'react';
 // Discount: Applies Discount
 
 const Offers = [
-  { id: 1, Name: 'Weekend Special Burger', Content: 'Our signaturese and special sauce. Limited time offer!', Price: '15.00', Image: '/assets/Pizza.png', IsActive: true },
-  { id: 2, Name: 'Family Combo Deal', Content: 'Perfect for the families! Includes 4 burgers, 4 fries, and 4 drinks.', Price: '50.00', Image: '/assets/Pizza.png', IsActive: true },
-  { id: 3, Name: 'Student Meal', Content: 'Get your student meal now with low price!', Price: '90.00', Image: '/assets/Pizza.png', IsActive: true },
+  { id: 1, Name: 'Weekend Special Burger', Content: 'Our signaturese and special sauce. Limited time offer!', Price: '15.00', Image: '/assets/Pizza.png', IsActive: true, Countdown: "2025-05-15T23:59:59" },
+  { id: 2, Name: 'Family Combo Deal', Content: 'Perfect for the families! Includes 4 burgers, 4 fries, and 4 drinks.', Price: '50.00', Image: '/assets/Pizza.png', IsActive: true, IsLimitedTime: true },
+  { id: 3, Name: 'Student Meal', Content: 'Get your student meal now with low price!', Price: '90.00', Image: '/assets/Pizza.png', IsActive: true, Discount: 10 },
+  { id: 4, Name: 'Due Meal', Content: 'Have fun with your friend with low price!', Price: '40.00', Image: '/assets/Pizza.png', IsActive: true, Countdown: "2022-05-15T23:59:59" },
+  { id: 5, Name: 'Tajin Pasta', Content: 'For limited time, get Tajin Pasta for 20.00 L.E only!', Price: '40.00', Image: '/assets/Pizza.png', IsActive: true, IsLimitedTime: true, Countdown: "2025-05-15T23:59:59", Discount: 50 },
+  { id: 5, Name: '2 Hawashi For The Same Price', Content: 'Get 2 hawawshi for the same price', Price: '30.00', Image: '/assets/Pizza.png', IsActive: true, IsLimitedTime: true, Discount: 50 }
 ]
 
 const Reviews = [
-  { id: 1, Username: "Unknown", Profile: "/Icons/download.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم." },
-  { id: 2, Username: "Sarah Ahmed", Profile: "/Icons/User.png", Date: "2024/03/14", Stars: 4, Review: "Best fast food restaurant in the area. The prices are reasonable and the quality is outstanding." },
-  { id: 3, Username: "Mohamed Ali", Profile: "/Icons/User.png", Date: "2024/03/13", Stars: 5, Review: "Great atmosphere and friendly staff. The food is always fresh and served hot." }
+  { id: 1, Username: "Unknown", Profile: "/Icons/User.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم." }
 ]
 
 export default function Home() {
