@@ -55,7 +55,7 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                             <span className="discounted-price">${discountedPrice}</span>
                         </>
                     ) : (
-                        <span className='discounted-price'>${originalPrice.toFixed(2)}</span>
+                        <span className='discounted-price'>{originalPrice.toFixed(2)} L.E</span>
                     )}
                 </div>
                 <button className="offer-btn" disabled={isExpired}>
