@@ -3,13 +3,18 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ReviewCard from '../components/Review';
 import OfferCard from '@/components/Offer';
-import { useState, useEffect } from 'react';
 import MenuModal from '@/components/MenuModal';
+import { useState } from 'react';
+
+// IsActive: Display/Hide the Offer
+// IsLimitedTime: Display/Hide Limited Time Badge
+// Countdown: Display/Hide Countdown, Format Example: 2022-05-15T23:59:59 YYYY-MM-DD T HH:MM:SS
+// Discount: Applies Discount
 
 const Offers = [
-  { id: 1, Title: 'مكرونة بالكبدة', Content: 'طاجن مكرونة بالكبدة', Price: '45.00', ImgSrc: '/assets/drinks.png', ImgAlt: 'مكرونة بالكبدة' },
-  { id: 2, Title: 'مكرونة بشاميل', Content: 'طاجن مكرونة بشاميل', Price: '50.00', ImgSrc: '/assets/drinks.png', ImgAlt: 'مكرونة بالكبدة' },
-  { id: 3, Title: 'طاجن الملوخية', Content: 'طاجن ملوخية + ٣ أرغفة عيش + مخلل', Price: '35.00', ImgSrc: '/assets/drinks.png', ImgAlt: 'طاجن الملوخية' },
+  { id: 1, Name: 'Weekend Special Burger', Content: 'Our signaturese and special sauce. Limited time offer!', Price: '15.00', Image: '/assets/Pizza.png', IsActive: true },
+  { id: 2, Name: 'Family Combo Deal', Content: 'Perfect for the families! Includes 4 burgers, 4 fries, and 4 drinks.', Price: '50.00', Image: '/assets/Pizza.png', IsActive: true },
+  { id: 3, Name: 'Student Meal', Content: 'Get your student meal now with low price!', Price: '90.00', Image: '/assets/Pizza.png', IsActive: true },
 ]
 
 const Reviews = [
@@ -26,18 +31,13 @@ export default function Home() {
   };
   
   const scrollToOffers = () => {
-    // Wait for next frame to ensure all elements have rendered
     requestAnimationFrame(() => {
       const offersSection = document.getElementById('offers');
       if (!offersSection) return;
-      
-      // Get the section's position relative to the top of the document
+
       const sectionTop = offersSection.getBoundingClientRect().top + window.scrollY;
-      
-      // Subtract 50px to add padding above the section
       const scrollPosition = sectionTop - 50;
       
-      // Perform the scroll
       window.scrollTo({
         top: scrollPosition,
         behavior: 'smooth'
@@ -58,8 +58,10 @@ export default function Home() {
         <section className='hero-section overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
           <h1 className='title text-[2.5rem] text-[#2c3e50] mb-6 font-semibold'>Welcome to SEC Restaurant</h1>
           <p className='text-[1.1rem] text-[#666666] max-w-[800px] mx-auto mb-8 leading-[1.6]'>
-            Experience the best fast food in town! We serve delicious burgers, crispy fries, and refreshing drinks.
-            Our commitment to quality and speed ensures you get the perfect meal every time.
+            Taste the heart of Egypt with our traditional dishes like tender hawawshi,
+            flavorful molokhia, rich tajin pasta, and perfectly grilled kofta.
+            Every meal is made with fresh ingredients and served with warm baladi bread.
+            At SEC Restaurant, we bring authentic Egyptian flavors with quality and care in every bite.
           </p>
 
           <div className='btnContainer flex gap-6 justify-center mb-8'>
@@ -72,9 +74,19 @@ export default function Home() {
         <section id="offers" className='mt-40 py-8'>
           <h2 className='text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto'>
-            {/* {Offers.map((item) => (
-              <OfferCard key={item.id} Title={item.Title} Content={item.Content} Price={item.Price} ImgSrc={item.ImgSrc} ImgAlt={item.ImgAlt} />
-            ))} */}
+            {Offers.map((item) => (
+              <OfferCard
+                key={item.id}
+                Image={item.Image}
+                Name={item.Name}
+                Content={item.Content}
+                Price={item.Price}
+                IsActive={item.IsActive}
+                Discount={item.Discount}
+                countdown={item.Countdown}
+                IsLimitedTime={item.IsLimitedTime}
+              />
+            ))}
           </div>
         </section>
 

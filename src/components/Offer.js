@@ -1,115 +1,67 @@
-import Image from "next/image";
+"use client";
+import { useState, useEffect } from 'react';
+import OfferBadge from "./OfferBadge";
 
-export default function OfferCard({ Name, Description, Price, Discount, Image, IsActive, IsLimitedTime, Countdown }) {
-// Remaining Time Format
-function formatTimeRemaining(endDate) {
-    if (!endDate) return "Limited Time";
-    
-    const now = new Date();
-    const end = new Date(endDate);
-    const diff = end - now;
+export default function OfferCard({ Image, Name, Content, Price, IsActive, Discount, countdown, IsLimitedTime }) {
+    const [showOffer, setShowOffer] = useState(true);
+    const [isExpired, setIsExpired] = useState(false);
 
-    if (diff <= 0) return "Expired";
+    useEffect(() => {
+        // Check if offer is active
+        setShowOffer(IsActive);
+    }, [IsActive]);
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    useEffect(() => {
+        // Reset expired state when countdown changes
+        setIsExpired(false);
 
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-// Countdown Update
-function updateCountdowns() {
-    const countdownElements = document.querySelectorAll('.countdown');
-    countdownElements.forEach(element => {
-        const endDate = element.dataset.endDate;
-        if (!endDate) {
-            element.textContent = "Limited Time";
-        } else {
-            element.textContent = formatTimeRemaining(endDate);
+        // Check if countdown exists and if the offer has expired
+        if (countdown) {
+            const interval = setInterval(() => {
+                const now = new Date();
+                const end = new Date(countdown);
+                if (now > end) {
+                    setIsExpired(true);
+                    clearInterval(interval);  // Stop the interval once expired
+                }
+            }, 1000);
+            return () => clearInterval(interval); // Clean up the interval when component unmounts or countdown changes
         }
-    });
-}
+    }, [countdown]); // Re-run when countdown changes
 
-// Discounted Price Calculation
-function calculateDiscountedPrice(price, discount) {
-    if (!discount) return price;
-    const numericPrice = parseFloat(price.replace('$', ''));
-    const discountedPrice = numericPrice - (numericPrice * (discount / 100));
-    return `${discountedPrice.toFixed(2)} L.E`;
-}
+    if (!showOffer) return null;
 
-// Expired Offer Check
-function isOfferExpired(countdown) {
-    if (!countdown) return false;
-    const now = new Date();
-    const end = new Date(countdown);
-    return end - now <= 0;
-}
+    const showDiscount = Discount !== null && Discount !== undefined;
+    const originalPrice = parseFloat(Price);
+    const discountedPrice = showDiscount
+        ? (originalPrice - originalPrice * (Discount / 100)).toFixed(2)
+        : null;
 
-// Offers Rendering
-function renderOffers() {
-    const offersContainer = document.getElementById('offers-container');
-    
-    // Filter Active Offers
-    const activeOffers = offers.filter(offer => offer.isActive);
-    
-    // Generate HTML for each offer
-    const offersHTML = activeOffers.map(offer => {
-        let badgeHTML = '';
-        let rightPosition = 1; // Start from rightmost position
-        const isExpired = isOfferExpired(offer.countdown);
-        
-        // Integrate Discount Badge
-        if (offer.discount) {
-            badgeHTML += `
-                <div class="discount-badge" style="right: ${rightPosition}rem">%${offer.discount} Discount</div>
-            `;
-            rightPosition += 4.5;
-        }
-        
-        // Integrate Limited Time Badge
-        if (offer.isLimitedTime) {
-            badgeHTML += `
-                <div class="offer-badge" style="right: ${rightPosition}rem">
-                    <span class="countdown" data-end-date="${offer.countdown || ''}">${offer.countdown ? formatTimeRemaining(offer.countdown) : "Limited Time"}</span>
+    return (
+        <div className="offer-card relative">
+            <img src={Image} alt={Name} className="offer-image" />
+            <OfferBadge 
+                discount={Discount} 
+                isLimitedTime={IsLimitedTime} 
+                countdown={countdown}
+            />
+            <div className="offer-content">
+                <h3 className="offer-title">{Name}</h3>
+                <p className="offer-description">{Content}</p>
+                <div className="offer-price-container">
+                    {showDiscount ? (
+                        <>
+                            <span className="original-price">${originalPrice.toFixed(2)}</span>
+                            <span className="discounted-price">${discountedPrice}</span>
+                        </>
+                    ) : (
+                        <span className='discounted-price'>${originalPrice.toFixed(2)}</span>
+                    )}
                 </div>
-            `;
-        }
-        
-        return `
-            <div class="offer-card" 
-                 data-has-discount="${offer.discount ? 'true' : 'false'}"
-                 data-has-limited-time="${offer.isLimitedTime ? 'true' : 'false'}">
-                <img src="${offer.image}" alt="${offer.title}" class="offer-image">
-                ${badgeHTML}
-                <div class="offer-content">
-                    <h3 class="offer-title">${offer.title}</h3>
-                    <p class="offer-description">${offer.description}</p>
-                    <div class="offer-price-container">
-                        ${offer.discount ? `
-                            <span class="original-price">${offer.price}</span>
-                            <span class="discounted-price">${calculateDiscountedPrice(offer.price, offer.discount)}</span>
-                        ` : `
-                            <span class="discounted-price">${offer.price}</span>
-                        `}
-                    </div>
-                    <button class="offer-btn" ${isExpired ? 'disabled' : ''}>${isExpired ? 'Offer Expired' : 'Order Now'}</button>
-                </div>
+                <button className="offer-btn" disabled={isExpired}>
+                    {isExpired ? 'Offer Expired' : 'Order Now'}
+                </button>
             </div>
-        `;
-    }).join('');
-    
-    // Insert The Offers Into The Container
-    offersContainer.innerHTML = offersHTML;
-    
-    // Start Countdown Updates
-    if (activeOffers.some(offer => offer.isLimitedTime)) {
-        setInterval(updateCountdowns, 1000);
-    }
-}
-
-// Offers Rendering when Page Loads
-document.addEventListener('DOMContentLoaded', renderOffers);
+        </div>
+    );
 }
