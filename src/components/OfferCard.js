@@ -70,7 +70,7 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                         )}
                     </div>
                     <button className="offer-btn" onClick={displayOnlineOrderModal} disabled={isExpired}>
-                        {isExpired ? 'Offer Expired' : 'Order Now'}
+                        {isExpired ? 'Expired' : 'Order Now'}
                     </button>
                 </div>
             </div>
