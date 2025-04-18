@@ -49,7 +49,7 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                 isOpen={isOnlineOrderModalOpen} 
                 onClose={() => setIsOnlineOrderModalOpen(false)} 
             />
-            <div className="offer-card relative">
+            <div className="offer-card relative dark:bg-[#212121]">
                 <img src={Image} alt={Name} className="offer-image" />
                 <OfferBadge 
                     discount={Discount} 
@@ -57,8 +57,8 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                     countdown={countdown}
                 />
                 <div className="offer-content">
-                    <h3 className="offer-title">{Name}</h3>
-                    <p className="offer-description">{Content}</p>
+                    <h3 className="offer-title dark:text-[#f5f5f5]">{Name}</h3>
+                    <p className="offer-description dark:text-[#b8b8b8]">{Content}</p>
                     <div className="offer-price-container">
                         {showDiscount ? (
                             <>
