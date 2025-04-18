@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class', // 👈 Enable class strategy
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,7 +8,6 @@ export default {
   ],
   theme: {
     extend: {
-      //
       animation: {
         slideInFromRight: 'slideInFromRight 0.3s ease forwards',
         slideOutFromLeft: 'slideOutFromLeft 0.3s ease forwards',
