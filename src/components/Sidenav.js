@@ -74,7 +74,7 @@ export default function Sidenav({ isOpen, onClose }) {
             />
             <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex z-[48] transition-all duration-300 ease" onClick={onClose} />
                 <div className={`Sidenav fixed top-[68px] right-[0%] w-[300px] h-full bg-white z-[49] transition-all duration-300 ease shadow-md flex flex-col dark:bg-[#1E1E1E] ${ isClosing ? 'animate-slideOutFromLeft' : 'animate-slideInFromRight' }`}>
-                    <div className="flex justify-between items-center p-6 border-b border-b-[#eeeeee] bg-white sticky top-0 z-50 transition-all duration-300 ease dark:bg-[#1E1E1E]">
+                    <div className="flex justify-between items-center p-6 border-b border-b-[#eeeeee] bg-white sticky top-0 z-50 transition-all duration-300 ease dark:bg-[#1E1E1E] dark:border-b-[#474747]">
                         <h2 className="m-0 text-[#2c3e50] text-[1.5rem] font-semibold dark:text-[#ebebeb]">Settings</h2>
                         <button 
                             className="bg-none border-none text-[2rem] text-[#95a5a6] cursor-pointer p-0 leading-none w-[40px] h-[40px] flex items-center justify-center rounded-[50%] transition-all duration-300 ease hover:text-[#e74c3c] hover:bg-[#e74c3c1a] font-mono"

@@ -42,7 +42,7 @@ export default function Home() {
   };
 
   return (
-    <main className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden'>
+    <main className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden]'>
       <Navbar/>
       <MenuModal 
         isOpen={isMenuOpen} 
