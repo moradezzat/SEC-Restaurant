@@ -98,7 +98,7 @@ export default function Sidenav({ isOpen, onClose }) {
                             <h3 className="m-0 mb-4 text-[#2c3e50] text-[1.1rem] dark:text-[#CCCCCC]">Theme</h3>
                             <div className="flex gap-4 mt-4">
                                 <button
-                                    className={`flex-1 p-[0.8rem] border-[1px] border-b-[#dddddd] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] ${selectedMode === 'light' ? 'bg-[#e74c3c] text-white border-b hover:text-white' : 'bg-white text-[#2c3e50] border-[#dddddd] dark:bg-[#1E1E1E] dark:text-white dark:border-[#5c5c5c] hover:dark:text-[#e73c3c] dark:hover:border-[#e74c3c]'}`}
+                                    className={`flex-1 p-[0.8rem] border-[1px] border-b-[#dddddd] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] ${selectedMode === 'light' ? 'bg-[#e74c3c] text-white border-b hover:text-white' : 'bg-white text-[#2c3e50] border-[#dddddd] dark:bg-[#1E1E1E] dark:text-[#dddddd] dark:border-[#5c5c5c] hover:dark:text-[#e73c3c] dark:hover:border-[#e74c3c]'}`}
                                     onClick={() => selectMode('light')}>
                                     Light
                                 </button>
@@ -111,7 +111,7 @@ export default function Sidenav({ isOpen, onClose }) {
                         </div>
                         <div className='mb-8'>
                             <div className="flex gap-4 mt-4">
-                                <button onClick={displayContactModal} className='flex-1 p-[0.8rem] border-[1px] border-b-[#dddddd] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] dark:text-white dark:border-[#5c5c5c] dark:hover:text-[#e74c3c] dark:hover:border-[#e74c3c]'>
+                                <button onClick={displayContactModal} className='flex-1 p-[0.8rem] border-[1px] border-b-[#dddddd] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] dark:text-[#dddddd] dark:border-[#5c5c5c] dark:hover:text-[#e74c3c] dark:hover:border-[#e74c3c]'>
                                     Contact Us
                                 </button>
                             </div>
