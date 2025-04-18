@@ -12,7 +12,7 @@ import { useState } from 'react';
 // Discount: Applies Discount
 
 const Offers = [
-  { id: 1, Name: 'No Offers', Content: 'Unfortunately there is no available offers at the time.', Price: '0000.00', Image: '/assets/No_Offers.png', IsActive: true, Countdown: "2000-01-01T23:59:59" }
+  { id: 1, Name: 'No Offers', Content: 'Unfortunately there is no available offers at the time.', Price: '0.00', Image: '/assets/No_Offers.png', IsActive: true, Countdown: "2000-01-01T23:59:59" }
 ]
 
 const Reviews = [
