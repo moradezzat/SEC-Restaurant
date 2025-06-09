@@ -316,6 +316,12 @@
     }
 }
 
+@media screen and (max-width: 530px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
 @media screen and (max-width: 443px) {
     .btn {
         width: 360px;
@@ -337,6 +343,12 @@
     }
 }
 
+@media screen and (max-width: 388px) {
+    .section-title {
+        font-size: 1.7rem;
+    }
+}
+
 @media screen and (max-width: 383px) {
     .btn {
         width: 300px;
@@ -347,6 +359,12 @@
 @media screen and (max-width: 376px) {
     .title {
         font-size: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 372px) {
+    .section-title {
+        font-size: 1.6rem;
     }
 }
 
@@ -361,6 +379,12 @@
     }
 }
 
+@media screen and (max-width: 357px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
 @media screen and (max-width: 351px) {
     .title {
         font-size: 2.2rem;
@@ -371,6 +395,12 @@
     .btn {
         width: 260px;
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 357px) {
+    .section-title {
+        font-size: 1.4rem;
     }
 }
 

@@ -28,7 +28,7 @@ export default {
       },
       fontFamily: {
         poppins: ["var(--font-poppins)"],
-        playfair: ["var(--font-cairo)"],
+        cairo: ["var(--font-cairo)"],
       },
     },
   },

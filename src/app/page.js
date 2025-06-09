@@ -16,7 +16,8 @@ const Offers = [
 ]
 
 const Reviews = [
-  { id: 1, Username: "Unknown", Profile: "/Icons/User.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم." }
+  { id: 1, Username: "Unknown", Profile: "/Icons/User.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.png" },
+  { id: 2, Username: "Unknown", Profile: "/Icons/User.png", Date: "2025/05/03", Stars: 5, Review: "I really like the restaurant and this egyptian cuisine. You have to try it!", Nationality: "/Icons/GermanFlag.png" }
 ]
 
 export default function Home() {
@@ -42,13 +43,13 @@ export default function Home() {
   };
 
   return (
-    <main className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden] dark:bg-[#0f0f0f]'>
+    <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col'>
       <Navbar/>
       <MenuModal 
         isOpen={isMenuOpen} 
         onClose={() => setIsMenuOpen(false)} 
       />
-      <main className='max-w-[1200px] mx-auto mb-8 px-8 text-center w-full'>
+      <main className='max-w-[1200px] mx-auto mb-8 px-8 text-center w-full flex-1'>
 
         {/* Hero Section */}
         <section className='hero-section overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
@@ -61,14 +62,14 @@ export default function Home() {
           </p>
 
           <div className='btnContainer flex gap-6 justify-center mb-8'>
-            <button className='btn primary' onClick={displayMenuModal}>View Our Menu</button>
-            <button className='btn secondary' onClick={scrollToOffers}>Special Offers</button>
+            <button className='btn primary' onClick={displayMenuModal}>View our menu</button>
+            <button className='btn secondary' onClick={scrollToOffers}>Special offers</button>
           </div>
         </section>
 
         {/* Offers Section */}
         <section id="offers" className='mt-40 py-8'>
-          <h2 className='text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
+          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto'>
             {Offers.map((item) => (
               <OfferCard
@@ -88,16 +89,24 @@ export default function Home() {
 
         {/* Reviews Section */}
         <section className='mt-16 py-8'>
-          <h2 className='text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Customers Reviews <img src='/Icons/Star.png' className='w-8 h-8 -mt-[0.2rem] ml-[0.3rem]'/></h2>
+          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Customers Reviews <img src='/Icons/Star.png' className='w-8 h-8 -mt-[0.2rem] ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto cursor-default'>
             {Reviews.map((item) => (
-              <ReviewCard key={item.id} Username={item.Username} Profile={item.Profile} Date={item.Date} Stars={item.Stars} Review={item.Review} />
+              <ReviewCard
+                key={item.id}
+                Username={item.Username}
+                Profile={item.Profile}
+                Date={item.Date}
+                Stars={item.Stars}
+                Review={item.Review}
+                Flag={item.Nationality}
+              />
             ))}
           </div>
         </section>
         
       </main>
       <Footer/>
-    </main>
+    </div>
   );
 }
