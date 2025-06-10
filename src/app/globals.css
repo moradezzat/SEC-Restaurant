@@ -8,10 +8,6 @@
     font-family: 'Poppins', 'Cairo', sans-serif;
 }
 
-body {
-    transition: colors 0.3 ease;
-}
-
 .btn {
     padding: 0.8rem 1.5rem;
     border: none;
