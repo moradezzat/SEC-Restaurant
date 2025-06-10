@@ -16,7 +16,7 @@ export default function ReviewCard({ Username, Profile, Date, Stars, Review, Fla
             </div>
             <div className="flex gap-[0.2rem] mb-[1rem] justify-center">
                 {[...Array(Stars)].map((_, index) => (
-                    <Image key={index} src="/Icons/Star.png" alt="Star" width={20} height={20} className="w-5 h-5 object-contain"/>
+                    <Image key={index} src="/Icons/Star.png" alt="Star" width={160} height={160} className="w-5 h-5 object-contain"/>
                 ))}
             </div>
             <div className="text-[#666666] text-[0.95rem] leading-[1.6] text-center flex-1 overflow-y-auto p-2 font-sans-serif dark:text-[#919191] transition-colors duration-300 ease">{Review}</div>
