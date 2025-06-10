@@ -40,7 +40,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="">
-      <body className={`${poppins.variable} ${cairo.variable} font-poppins antialiased dark:bg-[#121212]`}>
+      <body className={`${poppins.variable} ${cairo.variable} font-poppins antialiased dark:bg-[#121212] transition-colors duration-300 ease`}>
         {children}
         <SpeedInsights />
         <Analytics/>
