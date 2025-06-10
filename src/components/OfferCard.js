@@ -49,24 +49,24 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                 isOpen={isOnlineOrderModalOpen} 
                 onClose={() => setIsOnlineOrderModalOpen(false)} 
             />
-            <div className="offer-card relative dark:bg-[#212121]">
-                <img src={Image} alt={Name} className="offer-image" />
+            <div className="dark:bg-[#212121] offer-card transition-colors duration-300 ease">
+                <img src={Image} alt={Name} className="w-full h-[200px] object-cover relative z-[1]" />
                 <OfferBadge 
                     discount={Discount} 
                     isLimitedTime={IsLimitedTime} 
                     countdown={countdown}
                 />
-                <div className="offer-content">
-                    <h3 className="offer-title dark:text-[#f5f5f5]">{Name}</h3>
-                    <p className="offer-description dark:text-[#b8b8b8]">{Content}</p>
-                    <div className="offer-price-container">
+                <div className="p-6 flex flex-1 flex-col justify-between cursor-default">
+                    <h3 className="dark:text-[#f5f5f5] text-[1.25rem] text-[#2c3e50] mb-2 font-semibold transition-colors duration-300 ease">{Name}</h3>
+                    <p className="dark:text-[#b8b8b8] text-[#666] text-[0.9rem] leading-6 mb-4 flex-1 transition-colors duration-300 ease">{Content}</p>
+                    <div className="flex flex-row items-center justify-center gap-[0.1rem] mb-4 relative">
                         {showDiscount ? (
                             <>
-                                <span className="original-price">{originalPrice.toFixed(2)} L.E</span>
-                                <span className="discounted-price">{discountedPrice} L.E</span>
+                                <span className="text-[#95a5a6] line-through text-[1rem]">{originalPrice.toFixed(2)} L.E</span>
+                                <span className="text-[#e74c3c] text-2xl font-semibold">{discountedPrice} L.E</span>
                             </>
                         ) : (
-                            <span className='discounted-price'>{originalPrice.toFixed(2)} L.E</span>
+                            <span className='text-[#e74c3c] text-2xl font-semibold'>{originalPrice.toFixed(2)} L.E</span>
                         )}
                     </div>
                     <button className="offer-btn" onClick={displayOnlineOrderModal} disabled={isExpired}>

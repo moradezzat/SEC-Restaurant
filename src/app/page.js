@@ -1,7 +1,7 @@
 "use client";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ReviewCard from '../components/ReviewCard';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ReviewCard from '@/components/ReviewCard';
 import OfferCard from '@/components/OfferCard';
 import MenuModal from '@/components/MenuModal';
 import { useState } from 'react';
@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col'>
+    <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col transition-colors duration-300 ease'>
       <Navbar/>
       <MenuModal 
         isOpen={isMenuOpen} 
@@ -53,8 +53,8 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className='hero-section overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
-          <h1 className='title text-[2.5rem] text-[#2c3e50] mb-6 font-semibold dark:text-[#dddddd]'>Welcome to SEC Restaurant</h1>
-          <p className='text-[1.1rem] text-[#666666] max-w-[800px] mx-auto mb-8 leading-[1.6] dark:text-[#b8b8b8]'>
+          <h1 className='title text-[2.5rem] text-[#2c3e50] mb-6 font-semibold dark:text-[#dddddd] transition-colors duration-300 ease'>Welcome to SEC Restaurant</h1>
+          <p className='text-[1.1rem] text-[#666666] max-w-[800px] mx-auto mb-8 leading-[1.6] dark:text-[#b8b8b8] transition-colors duration-300 ease'>
             Taste the heart of Egypt with our traditional dishes like tender hawawshi,
             flavorful molokhia, rich tajin pasta, and perfectly grilled kofta.
             Every meal is made with fresh ingredients and served with warm baladi bread.
@@ -69,7 +69,7 @@ export default function Home() {
 
         {/* Offers Section */}
         <section id="offers" className='mt-40 py-8'>
-          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
+          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease'>Special Offers <img src='/Icons/Star2.png' className='w-8 h-8 ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto'>
             {Offers.map((item) => (
               <OfferCard
@@ -89,7 +89,7 @@ export default function Home() {
 
         {/* Reviews Section */}
         <section className='mt-16 py-8'>
-          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3]'>Customers Reviews <img src='/Icons/Star.png' className='w-8 h-8 -mt-[0.2rem] ml-[0.3rem]'/></h2>
+          <h2 className='section-title text-[2rem] text-left text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease'>Customers Reviews <img src='/Icons/Star.png' className='w-8 h-8 -mt-[0.2rem] ml-[0.3rem]'/></h2>
           <div className='flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto cursor-default'>
             {Reviews.map((item) => (
               <ReviewCard

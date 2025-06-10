@@ -21,7 +21,6 @@
     position: relative;
     overflow: hidden;
     letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
 .btn:before {
@@ -45,78 +44,24 @@
     transform: translateX(100%);
 }
 
-/* Offers Section Styles */
+/* Offers Section */
 .offer-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     width: 300px;
     height: 450px;
     display: flex;
     flex-direction: column;
-    flex: 0 0 300px;
+    flex: 0 0 auto;
 }
 
 .offer-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.offer-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    position: relative;
-    z-index: 1;
-}
-
-.offer-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: default;
-}
-
-.offer-title {
-    font-size: 1.25rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.offer-description {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    flex: 1;
-}
-
-.offer-price-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.1rem;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.original-price {
-    color: #95a5a6;
-    text-decoration: line-through;
-    font-size: 1rem;
-}
-
-.discounted-price {
-    color: #e74c3c;
-    font-size: 1.5rem;
-    font-weight: 600;
 }
 
 .discount-badge {
@@ -143,7 +88,7 @@
     width: 100%;
     padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background: linear-gradient(45deg, #e74c3c, #c0392b);
     color: white;
     font-weight: 500;
@@ -320,6 +265,15 @@
     .section-title {
         font-size: 1.8rem;
     }
+
+    .ReviewCard {
+        width: 265px;
+    }
+
+    .offer-card {
+        width: 265px;
+        flex: 0 0 265px;
+    }
 }
 
 @media screen and (max-width: 443px) {
@@ -347,6 +301,15 @@
     .section-title {
         font-size: 1.7rem;
     }
+
+    .ReviewCard {
+        width: 250px;
+    }
+
+    .offer-card {
+        width: 250px;
+        flex: 0 0 250px;
+    }
 }
 
 @media screen and (max-width: 383px) {
@@ -366,6 +329,15 @@
     .section-title {
         font-size: 1.6rem;
     }
+
+    .ReviewCard {
+        width: 235px;
+    }
+
+    .offer-card {
+        width: 235px;
+        flex: 0 0 235px;
+    }
 }
 
 @media screen and (max-width: 363px) {
@@ -383,6 +355,15 @@
     .section-title {
         font-size: 1.5rem;
     }
+
+    .ReviewCard {
+        width: 220px;
+    }
+
+    .offer-card {
+        width: 220px;
+        flex: 0 0 220px;
+    }
 }
 
 @media screen and (max-width: 351px) {
@@ -395,12 +376,6 @@
     .btn {
         width: 260px;
         font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 357px) {
-    .section-title {
-        font-size: 1.4rem;
     }
 }
 

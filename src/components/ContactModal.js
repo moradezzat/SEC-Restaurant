@@ -33,8 +33,8 @@ export default function ContactModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-[50] opacity-100 transition-opacity duration-300 ease-in-out" onClick={Hide}>
-      <div className="bg-white p-8 rounded-2xl w-[90%] max-w-[400px] relative animate-slideUp dark:bg-[#1e1e1e]" onClick={(e) => e.stopPropagation()}>
-        <h2 className="-mt-4 mb-4 text-[#2c3e50] text-[1.8rem] font-semibold text-left dark:text-[#cecece]">Contact Us</h2>
+      <div className="bg-white p-8 rounded-xl w-[90%] max-w-[400px] relative animate-slideUp dark:bg-[#1e1e1e]" onClick={(e) => e.stopPropagation()}>
+        <h2 className="-mt-4 mb-4 text-[#2c3e50] text-[1.8rem] font-semibold text-left dark:text-[#cecece]">Contact us</h2>
         
         <div className="flex flex-col gap-4 mb-8">
           <div
@@ -58,7 +58,7 @@ export default function ContactModal({ isOpen, onClose }) {
         </div>
 
         <button onClick={confirmContact} disabled={!selectedOption}
-          className={`absolute bottom-4 right-4 py-[0.5rem] px-6 -mb-1 text-white border-none rounded-[5px] transition-all duration-300 ${
+          className={`absolute bottom-3 right-3 py-[0.5rem] px-6 text-white border-none rounded-lg transition-all duration-300 ${
             selectedOption ? 'bg-[#e74c3c] hover:bg-[#c0392b]' : 'bg-gray-300 cursor-not-allowed dark:bg-[#4e4e4e] dark:text-[#80848a]'}`}>
           Confirm
         </button>

@@ -20,7 +20,7 @@ export default function Sidenav({ isOpen, onClose }) {
             setTimeout(() => {
                 setShowSidebar(false);
                 setIsClosing(false);
-            }, 300);
+            }, 250);
         }
     }, [isOpen]);
 
