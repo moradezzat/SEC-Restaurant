@@ -38,13 +38,13 @@ export default function MenuModal({ isOpen, onClose }) {
           <>
             <img 
               src='/Menu1.jpg' 
-              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out'
+              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-102 transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('/Menu1.jpg')}
               alt="Menu 1"
             />
             <img 
               src='/Menu2.jpg' 
-              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out'
+              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-102 transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('/Menu2.jpg')}
               alt="Menu 2"
             />
