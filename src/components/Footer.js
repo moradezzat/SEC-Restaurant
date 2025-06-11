@@ -10,8 +10,8 @@ export default function Footer() {
             <div className="max-w-[1200px] m-auto px-8">
                 {/* Desktop Layout */}
                 <div className="hidden lg:grid lg:grid-cols-2 lg:gap-8">
-                    <div className="grid grid-cols-2 gap-[1.5rem]">
-                        <div className="footer-section">
+                    <div className="grid grid-cols-2 gap-[1.5rem] max-w-[550px] mr-auto">
+                        <div className="footer-section max-w-[550px]">
                             <h3 className="text-[#e74c3c] text-[1.1rem] mb-4 text-center font-semibold cursor-default">Contact</h3>
                             <ul className="text-center list-none">
                                 <li className="mb-[0.5rem]"><a href="mailto:official.sec@outlook.com" className="text-white no-underline transition-colors duration-300 ease inline-block hover:text-[#e74c3c]">official.sec@outlook.com</a></li>
@@ -26,9 +26,9 @@ export default function Footer() {
                             </ul>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center text-center justify-center ml-80">
+                    <div className="flex flex-col items-center text-center justify-center max-w-[320px] ml-auto mr-8">
                         <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[100px] h-[100px] mb-[0.5rem] object-contain"/>
-                        <h2 className="text-[1.5rem] text-[#e74c3c] mb-4 font-semibold cursor-default">SEC Restaurant</h2>
+                        <h2 className="text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default">SEC Restaurant</h2>
                         <div className="flex gap-[0.8rem] justify-center">
                             <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                 <FontAwesomeIcon icon={faTiktok} size="lg"/>
@@ -47,9 +47,9 @@ export default function Footer() {
                 </div>
 
                 {/* Tablet Layout */}
-                <div className="hidden md:block lg:hidden">
+                <div className="hidden sm:block lg:hidden">
                     <div className="grid grid-cols-2 gap-8">
-                        <div className="flex flex-col space-y-6">
+                        <div className="flex flex-col space-y-6 max-w-[360px] mr-auto ml-6">
                             <div className="footer-section">
                                 <h3 className="text-[#e74c3c] text-[1rem] mb-3 text-center font-semibold cursor-default">Contact</h3>
                                 <ul className="text-center list-none text-sm">
@@ -65,9 +65,9 @@ export default function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="flex flex-col items-center text-center justify-center ml-52">
+                        <div className="flex flex-col items-center text-center justify-center max-w-[280px] ml-auto mr-6">
                             <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[100px] h-[100px] mb-[0.5rem] object-contain"/>
-                            <h2 className="text-[1.3rem] text-[#e74c3c] mb-4 font-semibold cursor-default">SEC Restaurant</h2>
+                            <h2 className="text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default">SEC Restaurant</h2>
                             <div className="flex gap-[0.8rem] justify-center">
                                 <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                     <FontAwesomeIcon icon={faTiktok} size="lg"/>
@@ -87,8 +87,8 @@ export default function Footer() {
                 </div>
 
                 {/* Mobile Layout */}
-                <div className="block md:hidden">
-                    <div className="flex flex-col items-center text-center space-y-4">
+                <div className="block sm:hidden">
+                    <div className="Branding flex flex-col items-center text-center space-y-4">
                         <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[90px] h-[90px] object-contain"/>
                         <h2 className="text-[1.2rem] text-[#e74c3c] font-semibold cursor-default">SEC Restaurant</h2>
                         <div className="flex gap-[0.6rem] justify-center">

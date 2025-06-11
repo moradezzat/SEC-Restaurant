@@ -357,12 +357,12 @@
     }
 
     .ReviewCard {
-        width: 220px;
+        width: 235px;
     }
 
     .offer-card {
-        width: 220px;
-        flex: 0 0 220px;
+        width: 235px;
+        flex: 0 0 235px;
     }
 }
 
@@ -379,6 +379,21 @@
     }
 }
 
+@media screen and (max-width: 340px) {
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .ReviewCard {
+        width: 235px;
+    }
+
+    .offer-card {
+        width: 235px;
+        flex: 0 0 235px;
+    }
+}
+
 @media screen and (max-width: 338px) {
     .title {
         font-size: 2.1rem;
@@ -388,6 +403,12 @@
 @media screen and (max-width: 326px) {
     .title {
         font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 324px) {
+    .section-title {
+        font-size: 1.3rem;
     }
 }
 
@@ -401,6 +422,12 @@
 @media screen and (max-width: 313px) {
     .title {
         font-size: 1.9rem;
+    }
+}
+
+@media screen and (max-width: 308px) {
+    .section-title {
+        font-size: 1.2rem;
     }
 }
 
