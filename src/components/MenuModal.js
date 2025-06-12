@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function MenuModal({ isOpen, onClose }) {
   const [selectedImage, setSelectedImage] = useState(null);
+
+  // Preload images when component mounts
+  useEffect(() => {
+    const preloadImages = () => {
+      const imageUrls = ['/Menu1.jpg', '/Menu2.jpg'];
+      imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+      });
+    };
+
+    preloadImages();
+  }, []);
 
   if (!isOpen) return null;
 
@@ -38,13 +51,13 @@ export default function MenuModal({ isOpen, onClose }) {
           <>
             <img 
               src='/Menu1.jpg' 
-              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-102 transition-transform duration-300 ease-in-out'
+              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('/Menu1.jpg')}
               alt="Menu 1"
             />
             <img 
               src='/Menu2.jpg' 
-              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-102 transition-transform duration-300 ease-in-out'
+              className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('/Menu2.jpg')}
               alt="Menu 2"
             />

@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', 'Cairo', sans-serif;
+    font-family: var(--font-poppins), var(--font-cairo), var(--font-ruqaa), sans-serif;
 }
 
 .btn {

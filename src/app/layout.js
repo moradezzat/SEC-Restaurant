@@ -4,7 +4,15 @@ import { Analytics } from "@vercel/analytics/react";
 import localFont from 'next/font/local';
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Inter } from 'next/font/google'
+import { LanguageProvider } from '../context/LanguageContext'
+
 config.autoAddCss = false;
+
+const ruqaa = localFont({
+  src: '../../public/Fonts/ArefRuqaa-Regular-1.ttf',
+  variable: '--font-ruqaa'
+});
 
 const poppins = localFont({
   src: [
@@ -25,6 +33,8 @@ const cairo = localFont({
   variable: '--font-cairo'
 });
 
+const inter = Inter({ subsets: ['latin'] })
+
 export const metadata = {
   title: "SEC Restaurant",
   description: "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes like hawawshi, molokhia, tajin pasta, and grilled kofta made with fresh ingredients.",
@@ -34,14 +44,81 @@ export const metadata = {
     description: "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes made with fresh ingredients.",
     type: "website",
     siteName: "SEC Restaurant",
+    locale: "ar_EG",
+    images: [
+      {
+        url: "/Banner.jpg",
+        alt: "SEC Restaurant - Authentic Egyptian Cuisine"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEC Restaurant",
+    description: "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes made with fresh ingredients.",
+    images: ["/Banner.jpg"]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   }
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="">
-      <body className={`${poppins.variable} ${cairo.variable} font-poppins antialiased dark:bg-[#121212]`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('theme') === 'dark' ||
+                    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              "name": "SEC Restaurant",
+              "image": "/Banner.jpg",
+              "description": "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes like hawawshi, molokhia, tajin pasta, and grilled kofta made with fresh ingredients.",
+              "servesCuisine": "Egyptian",
+              "priceRange": "$$",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "EG",
+                "addressLocality": "Cairo",
+                "addressRegion": "Cairo"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "2"
+              }
+            })
+          }}
+        />
+      </head>
+      <body className={`${poppins.variable} ${cairo.variable} ${ruqaa.variable} font-poppins antialiased dark:bg-[#121212] ${inter.className}`}>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <SpeedInsights />
         <Analytics/>
       </body>

@@ -2,15 +2,24 @@
 import { useState, useEffect } from 'react';
 import OfferBadge from "./OfferBadge";
 import OnlineOrderModal from './OnlineOrderModal';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function OfferCard({ Image, Name, Content, Price, IsActive, Discount, countdown, IsLimitedTime }) {
     const [showOffer, setShowOffer] = useState(true);
     const [isExpired, setIsExpired] = useState(false);
     const [isOnlineOrderModalOpen, setIsOnlineOrderModalOpen] = useState(false);
+    const { language, translations } = useLanguage();
 
     const displayOnlineOrderModal = () => {
         setIsOnlineOrderModalOpen(true)
     }
+
+    // Convert numbers to Arabic if Arabic language is selected
+    const convertToArabicNumbers = (num) => {
+        if (language !== 'ar') return num;
+        const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        return num.toString().replace(/[0-9]/g, (digit) => arabicNumbers[digit]);
+    };
 
     useEffect(() => {
         // Check if offer is active
@@ -42,6 +51,14 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
     const discountedPrice = showDiscount
         ? (originalPrice - originalPrice * (Discount / 100)).toFixed(2)
         : null;
+    
+    const currency = language === 'ar' 
+        ? 'ج.م' 
+        : 'L.E';
+
+    // Convert prices to Arabic numbers if Arabic language is selected
+    const formattedOriginalPrice = convertToArabicNumbers(originalPrice.toFixed(2));
+    const formattedDiscountedPrice = discountedPrice ? convertToArabicNumbers(discountedPrice) : null;
 
     return (
         <>
@@ -62,15 +79,15 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                     <div className="flex flex-row items-center justify-center gap-[0.1rem] mb-4 relative">
                         {showDiscount ? (
                             <>
-                                <span className="text-[#95a5a6] line-through text-[1rem]">{originalPrice.toFixed(2)} L.E</span>
-                                <span className="text-[#e74c3c] text-2xl font-semibold">{discountedPrice} L.E</span>
+                                <span className="text-[#95a5a6] line-through text-[1rem]">{formattedOriginalPrice} {currency}</span>
+                                <span className="text-[#e74c3c] text-2xl font-semibold">{formattedDiscountedPrice} {currency}</span>
                             </>
                         ) : (
-                            <span className='text-[#e74c3c] text-2xl font-semibold'>{originalPrice.toFixed(2)} L.E</span>
+                            <span className='text-[#e74c3c] text-2xl font-semibold'>{formattedOriginalPrice} {currency}</span>
                         )}
                     </div>
                     <button className="offer-btn" onClick={displayOnlineOrderModal} disabled={isExpired}>
-                        {isExpired ? 'Expired' : 'Order Now'}
+                        {isExpired ? `${translations.offers_section.expired}` : `${translations.offers_section.order}`}
                     </button>
                 </div>
             </div>

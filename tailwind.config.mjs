@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class', // 👈 Enable class strategy
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,6 +11,8 @@ export default {
       animation: {
         slideInFromRight: 'slideInFromRight 0.3s ease forwards',
         slideOutFromLeft: 'slideOutFromLeft 0.3s ease forwards',
+        slideInFromLeft: 'slideInFromLeft 0.3s ease forwards',
+        slideOutFromRight: 'slideOutFromRight 0.3s ease forwards',
       },
       keyframes: {
         slideInFromRight: {
@@ -21,6 +23,14 @@ export default {
           '0%': { right: '0px' },
           '100%': { right: '-300px' },
         },
+        slideInFromLeft: {
+          '0%': { left: '-300px' },
+          '100%': { left: '0px' },
+        },
+        slideOutFromRight: {
+          '0%': { left: '0px' },
+          '100%': { left: '-300px' },
+        },
       },
       colors: {
         background: "var(--background)",
@@ -29,6 +39,7 @@ export default {
       fontFamily: {
         poppins: ["var(--font-poppins)"],
         cairo: ["var(--font-cairo)"],
+        ruqaa: ["var(--font-ruqaa)"],
       },
     },
   },

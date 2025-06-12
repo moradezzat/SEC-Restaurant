@@ -1,0 +1,61 @@
+{
+    "navbar": {
+        "brand": "SEC Restaurant",
+        "home": "Home",
+        "menu": "Menu",
+        "contact": "Contact us"
+    },
+    "side_nav": {
+        "title": "Settings",
+        "language": "Language",
+        "theme": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "contactUs": "Contact Us"
+    },
+    "hero_section": {
+        "title": "Welcome to SEC Restaurant",
+        "description": "Taste the heart of Egypt with our traditional dishes like tender hawawshi, flavorful molokhia, rich tajin pasta, and perfectly grilled kofta. Every meal is made with fresh ingredients and served with warm baladi bread. At SEC Restaurant, we bring authentic Egyptian flavors with quality and care in every bite.",
+        "viewMenu": "View our menu",
+        "viewOffers": "Special offers"
+    },
+    "offers_section": {
+        "title": "Special Offers",
+        "noOffers": "No Offers",
+        "noOffersContent": "Unfortunately there is no available offers at the time.",
+        "expired": "Expired",
+        "order": "Order now"
+    },
+    "reviews_section": {
+        "title": "Customers Reviews",
+        "unknown": "Unknown"
+    },
+    "footer": {
+        "branding": "SEC Restaurant",
+        "copyright": "© 2025 SEC Restaurant. All rights reserved.",
+        "locationSection": {
+            "title": "Location",
+            "geoLocation": "Port Said St, Bab El-Shaareya Sq, Cairo, EG",
+            "googleMaps": "Google maps location"
+        },
+        "contactSection": {
+            "title": "Contact"
+        }
+    },
+    "contact_form": {
+        "title": "Contact us",
+        "phone": "Phone number",
+        "email": "Email",
+        "confirm": "Confirm"
+    },
+    "order_form": {
+        "title": "Sorry...",
+        "description": "Sorry, but online ordering is not available at the time.",
+        "button": "I understand."
+    },
+    "offers_badge": {
+        "expired": "Expired",
+        "limitedTime": "Limited Time",
+        "off": "Off"
+    }
+}
