@@ -223,6 +223,12 @@
 }
 
 /* Responsiveness */
+@media (max-width: 1090px) {
+    .hero-section > div:first-child {
+      display: none !important;
+    }
+}
+
 @media screen and (max-width: 629px) {
     .title {
         max-width: 320px;
@@ -253,9 +259,11 @@
     }
 
     .hero-section {
-        padding-top: 10rem;
+        padding-top: 8rem;
+        align-items: center !important;
+        text-align: center !important;
     }
-
+    
     .Sidenav {
         width: 100%;
     }

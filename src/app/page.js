@@ -19,21 +19,6 @@ export default function Home() {
   const displayMenuModal = () => {
     setIsMenuOpen(true);
   };
-  
-  const scrollToOffers = () => {
-    requestAnimationFrame(() => {
-      const offersSection = document.getElementById('offers');
-      if (!offersSection) return;
-
-      const sectionTop = offersSection.getBoundingClientRect().top + window.scrollY;
-      const scrollPosition = sectionTop - 50;
-      
-      window.scrollTo({
-        top: scrollPosition,
-        behavior: 'smooth'
-      });
-    });
-  };
 
   const Offers = [
     { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.png', IsActive: true, Countdown: "2000-01-01T23:59:59" }
@@ -48,20 +33,27 @@ export default function Home() {
   return (
     <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col transition-colors duration-300 ease'>
       <Navbar/>
-      <MenuModal 
-        isOpen={isMenuOpen} 
-        onClose={() => setIsMenuOpen(false)} 
-      />
-      <main className='max-w-[1200px] mx-auto mb-8 px-8 text-center w-full flex-1'>
+      <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
 
+      <main className='max-w-[1200px] mx-auto mb-8 px-8 w-full flex-1'>
         {/* Hero Section */}
-        <section className='hero-section overflow-hidden flex flex-col justify-center items-center text-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default'>
+        <section className={`hero-section flex flex-col justify-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default relative overflow-visible ${language === 'ar' ? 'items-end text-right' : 'items-start text-left'}`}>
+          {/* Transparent Container with Image */}
+          <div className={`absolute top-0 w-[300px] transition-colors duration-300 ease overflow-visible ${language === 'ar' ? 'left-0' : 'right-0'}`}>
+            <div className="w-[85%] h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+            </div>
+            <img 
+              src='/hero-shot.png' 
+              alt='Mahshi Dish' 
+              className='w-[350px] h-[350px] object-contain absolute top-[200px] left-1/2 transform -translate-x-1/2'
+            />
+          </div>
+          
           <h1 className='title text-[2.5rem] text-[#2c3e50] mb-6 font-semibold dark:text-[#dddddd] transition-colors duration-300 ease'>{translations.hero_section.title}</h1>
-          <p className='text-[1.1rem] text-[#666666] max-w-[800px] mx-auto mb-8 leading-[1.6] dark:text-[#b8b8b8] transition-colors duration-300 ease'>{translations.hero_section.description}</p>
+          <p className='text-[1.1rem] text-[#666666] max-w-[750px] mb-8 leading-[1.6] dark:text-[#b8b8b8] transition-colors duration-300 ease'>{translations.hero_section.description}</p>
 
-          <div className='btnContainer flex gap-6 justify-center mb-8'>
+          <div className='btnContainer flex gap-6 mb-8'>
             <button className='btn primary' onClick={displayMenuModal}>{translations.hero_section.viewMenu}</button>
-            <button className='btn secondary' onClick={scrollToOffers}>{translations.hero_section.viewOffers}</button>
           </div>
         </section>
 
