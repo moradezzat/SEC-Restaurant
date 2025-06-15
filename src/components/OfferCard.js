@@ -74,8 +74,8 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                     countdown={countdown}
                 />
                 <div className="p-6 flex flex-1 flex-col justify-between cursor-default">
-                    <h3 className="dark:text-[#f5f5f5] text-[1.25rem] text-[#2c3e50] mb-2 font-semibold transition-colors duration-300 ease">{Name}</h3>
-                    <p className="dark:text-[#b8b8b8] text-[#666] text-[0.9rem] leading-6 mb-4 flex-1 transition-colors duration-300 ease">{Content}</p>
+                    <h3 className="dark:text-[#f5f5f5] text-[1.25rem] text-[#2c3e50] text-center mb-2 font-semibold transition-colors duration-300 ease">{Name}</h3>
+                    <p className="dark:text-[#b8b8b8] text-[#666] text-[0.9rem] text-center leading-6 mb-4 flex-1 transition-colors duration-300 ease">{Content}</p>
                     <div className="flex flex-row items-center justify-center gap-[0.1rem] mb-4 relative">
                         {showDiscount ? (
                             <>
