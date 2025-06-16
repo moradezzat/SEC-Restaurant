@@ -4,9 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import localFont from 'next/font/local';
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { Inter } from 'next/font/google'
-import { LanguageProvider } from '../context/LanguageContext'
-
+import { LanguageProvider } from '../context/LanguageContext';
 config.autoAddCss = false;
 
 const ruqaa = localFont({
@@ -14,26 +12,25 @@ const ruqaa = localFont({
   variable: '--font-ruqaa'
 });
 
-const poppins = localFont({
+const rubik = localFont({
   src: [
-    { path: '../../public/Fonts/Poppins/Poppins-Light.ttf', weight: '300', style: 'normal' },
-    { path: '../../public/Fonts/Poppins/Poppins-Regular.ttf', weight: '400', style: 'normal' },
-    { path: '../../public/Fonts/Poppins/Poppins-Medium.ttf', weight: '500', style: 'normal' },
-    { path: '../../public/Fonts/Poppins/Poppins-SemiBold.ttf', weight: '600', style: 'normal' }
+    { path: '../../public/Fonts/Rubik/Rubik-Light.ttf', weight: '300', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-Medium.ttf', weight: '500', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-SemiBold.ttf', weight: '600', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-Bold.ttf', weight: '700', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-ExtraBold.ttf', weight: '800', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-Black.ttf', weight: '900', style: 'normal' },
+    { path: '../../public/Fonts/Rubik/Rubik-LightItalic.ttf', weight: '300', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-Italic.ttf', weight: '400', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-MediumItalic.ttf', weight: '500', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-SemiBoldItalic.ttf', weight: '600', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-BoldItalic.ttf', weight: '700', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-ExtraBoldItalic.ttf', weight: '800', style: 'italic' },
+    { path: '../../public/Fonts/Rubik/Rubik-BlackItalic.ttf', weight: '900', style: 'italic' }
   ],
-  variable: '--font-poppins'
+  variable: '--font-rubik'
 });
-
-const cairo = localFont({
-  src: [
-    { path: '../../public/Fonts/Cairo/Cairo-Regular.ttf', weight: '400', style: 'normal' },
-    { path: '../../public/Fonts/Cairo/Cairo-Medium.ttf', weight: '500', style: 'normal' },
-    { path: '../../public/Fonts/Cairo/Cairo-SemiBold.ttf', weight: '600', style: 'normal' }
-  ],
-  variable: '--font-cairo'
-});
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: "SEC Restaurant",
@@ -116,7 +113,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={`${poppins.variable} ${cairo.variable} ${ruqaa.variable} font-poppins antialiased dark:bg-[#121212] ${inter.className}`}>
+      <body className={`${ruqaa.variable} ${rubik.variable} antialiased dark:bg-[#121212]`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

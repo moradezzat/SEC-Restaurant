@@ -3,7 +3,8 @@
         "brand": "SEC Restaurant",
         "home": "Home",
         "menu": "Menu",
-        "contact": "Contact us"
+        "contact": "Contact us",
+        "about": "About us"
     },
     "side_nav": {
         "title": "Settings",
@@ -57,5 +58,17 @@
         "expired": "Expired",
         "limitedTime": "Limited Time",
         "off": "Off"
+    },
+    "about_section": {
+        "title": "About Us",
+        "description": "Set El Kol restaurant was established in 2024 with the aim of preserving authentic Egyptian cuisine and presenting it with a modern spirit, where we blend traditional flavors with contemporary presentation styles in an atmosphere inspired by the old Egyptian home, using fresh local ingredients and inherited cooking methods to offer our guests a warm dining experience that reflects Egypt’s identity in a way that suits our present time...",
+        "mission": {
+            "title": "Our Mission",
+            "description": "To preserve and share the rich culinary heritage of Egypt while embracing modern dining experiences."
+        },
+        "vision": {
+            "title": "Our Vision",
+            "description": "To become the premier destination for authentic Egyptian cuisine, known for quality and innovation."
+        }
     }
 }

@@ -5,18 +5,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-poppins), var(--font-cairo), var(--font-ruqaa), sans-serif;
+    font-family: var(--font-rubik), sans-serif;
 }
 
 .btn {
     padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 17px;
+    border-radius: 100px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    background: linear-gradient(45deg, #e74c3c, #e64432);
     color: white;
     position: relative;
     overflow: hidden;
@@ -171,7 +171,6 @@
 }
 
 .countdown {
-    font-family: 'Poppins', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.5px;
     text-align: center;

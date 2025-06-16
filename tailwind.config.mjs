@@ -30,18 +30,25 @@ export default {
         slideOutFromRight: {
           '0%': { left: '0px' },
           '100%': { left: '-300px' },
-        },
+        }
       },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        poppins: ["var(--font-poppins)"],
-        cairo: ["var(--font-cairo)"],
         ruqaa: ["var(--font-ruqaa)"],
+        rubik: ["var(--font-rubik)"],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.pause': {
+          'animation-play-state': 'paused',
+        },
+      });
+    },
+  ],
 };

@@ -28,7 +28,6 @@ export default function Home() {
     { id: 1, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.png" },
     { id: 2, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.png", Date: "2025/05/03", Stars: 5, Review: "I really like the restaurant and this egyptian cuisine. You have to try it!", Nationality: "/Icons/GermanFlag.png" }
   ]
-  
 
   return (
     <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col transition-colors duration-300 ease'>
@@ -57,8 +56,145 @@ export default function Home() {
           </div>
         </section>
 
+        {/* About Us Section */}
+        <section className='about mt-40 py-8'>
+          <div className="relative mb-12">
+            {/* Decorative line */}
+            <div className="absolute top-1/2 w-full h-[2px] bg-[#e74c3c] transform -translate-y-1/2"></div>
+            
+            {/* Title container */}
+            <div className="relative flex justify-center">
+              <div className="bg-[#f5f5f5] dark:bg-[#0f0f0f] px-8 py-4 transition-colors duration-300 ease">
+                {/* Desktop Title */}
+                <h2 className={`hidden lg:flex text-[2.5rem] text-[#2c3e50] cursor-default font-semibold items-center gap-4 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                  <>
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-8 h-8"/>
+                    {translations.about_section.title}
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-8 h-8"/>
+                  </>
+                </h2>
+
+                {/* Tablet Title */}
+                <h2 className={`hidden sm:flex lg:hidden text-[2rem] text-[#2c3e50] cursor-default font-semibold items-center gap-3 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                  <>
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-6 h-6"/>
+                    {translations.about_section.title}
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-6 h-6"/>
+                  </>
+                </h2>
+
+                {/* Mobile Title */}
+                <h2 className={`flex sm:hidden text-[1.5rem] text-[#2c3e50] cursor-default font-semibold items-center gap-2 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
+                  <>
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-5 h-5"/>
+                    {translations.about_section.title}
+                    <img src='/Icons/Star2.png' alt="Star icon" className="w-5 h-5"/>
+                  </>
+                </h2>
+              </div>
+            </div>
+          </div>
+          
+          {/* Desktop Layout */}
+          <div className={`hidden lg:flex flex-col lg:flex-row gap-12 items-stretch ${language === 'ar' ? 'lg:flex-row-reverse' : ''}`}>
+            {/* Image Container */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="w-full h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+                <img 
+                  src='/Banner.jpg' 
+                  alt='Restaurant Interior' 
+                  className='w-full h-full object-cover'
+                />
+              </div>
+            </div>
+
+            {/* Text Content */}
+            <div className="w-full lg:w-1/2 flex flex-col h-[400px]">
+              <p className={`text-[1.1rem] text-[#666666] ${language === 'ar' ? 'leading-[1.8]' : 'leading-[1.6]'} dark:text-[#b8b8b8] transition-colors duration-300 ease ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                {translations.about_section.description}
+              </p>
+              <div className="mt-auto flex gap-4">
+                <div className={`flex-1 p-6 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                  <h3 className="text-[#e74c3c] text-xl font-semibold mb-2">{translations.about_section.mission.title}</h3>
+                  <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease">{translations.about_section.mission.description}</p>
+                </div>
+                <div className={`flex-1 p-6 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+                  <h3 className="text-[#e74c3c] text-xl font-semibold mb-2">{translations.about_section.vision.title}</h3>
+                  <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease">{translations.about_section.vision.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Tablet Layout */}
+          <div className="hidden sm:block lg:hidden">
+            <div className={`flex flex-col gap-8 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+              {/* Image Container */}
+              <div className="w-full relative">
+                <div className="w-full h-[350px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+                  <img 
+                    src='/Banner.jpg' 
+                    alt='Restaurant Interior' 
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="w-full">
+                <p className={`text-[1rem] text-[#666666] ${language === 'ar' ? 'leading-[1.8]' : 'leading-[1.6]'} dark:text-[#b8b8b8] transition-colors duration-300 ease mb-6`}>
+                  {translations.about_section.description}
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className={`p-4 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease`}>
+                    <h3 className="text-[#e74c3c] text-lg font-semibold mb-2">{translations.about_section.mission.title}</h3>
+                    <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease text-sm">{translations.about_section.mission.description}</p>
+                  </div>
+                  <div className={`p-4 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease`}>
+                    <h3 className="text-[#e74c3c] text-lg font-semibold mb-2">{translations.about_section.vision.title}</h3>
+                    <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease text-sm">{translations.about_section.vision.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="block sm:hidden">
+            <div className={`flex flex-col gap-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+              {/* Image Container */}
+              <div className="w-full relative">
+                <div className="w-full h-[250px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+                  <img 
+                    src='/Banner.jpg' 
+                    alt='Restaurant Interior' 
+                    className='w-full h-full object-cover'
+                  />
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="w-full">
+                <p className={`text-[0.95rem] text-[#666666] ${language === 'ar' ? 'leading-[1.8]' : 'leading-[1.6]'} dark:text-[#b8b8b8] transition-colors duration-300 ease mb-4`}>
+                  {translations.about_section.description}
+                </p>
+                <div className="flex flex-col gap-4">
+                  <div className={`p-4 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease`}>
+                    <h3 className="text-[#e74c3c] text-base font-semibold mb-2">{translations.about_section.mission.title}</h3>
+                    <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease text-sm">{translations.about_section.mission.description}</p>
+                  </div>
+                  <div className={`p-4 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-lg transition-colors duration-300 ease`}>
+                    <h3 className="text-[#e74c3c] text-base font-semibold mb-2">{translations.about_section.vision.title}</h3>
+                    <p className="text-[#666666] dark:text-[#b8b8b8] transition-colors duration-300 ease text-sm">{translations.about_section.vision.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Offers Section */}
-        <section id="offers" className='mt-40 py-8'>
+        <section id="offers" className='mt-24 py-8'>
           <h2 className={`section-title text-[2rem] ${language === 'ar' ? 'text-right' : 'text-left'} text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {translations.offers_section.title} 
             <img src='/Icons/Star2.png' alt="Star icon" className={`w-8 h-8 ${language === 'ar' ? 'mr-[0.3rem]' : 'ml-[0.3rem]'}`}/>
