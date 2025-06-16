@@ -57,7 +57,7 @@ export default function Home() {
         </section>
 
         {/* About Us Section */}
-        <section className='about mt-40 py-8'>
+        <section className='about mt-40 py-8 cursor-default'>
           <div className="relative mb-12">
             {/* Decorative line */}
             <div className="absolute top-1/2 w-full h-[2px] bg-[#e74c3c] transform -translate-y-1/2"></div>
