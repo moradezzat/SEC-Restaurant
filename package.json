@@ -8,10 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "browserslist": [
-    "defaults and supports es6-module",
-    "maintained node versions"
-  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
