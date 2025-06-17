@@ -1,22 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function MenuModal({ isOpen, onClose }) {
   const [selectedImage, setSelectedImage] = useState(null);
-
-  // Preload images when component mounts
-  useEffect(() => {
-    const preloadImages = () => {
-      const imageUrls = ['/Menu1.jpg', '/Menu2.jpg'];
-      imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-      });
-    };
-
-    preloadImages();
-  }, []);
 
   if (!isOpen) return null;
 
@@ -50,15 +37,15 @@ export default function MenuModal({ isOpen, onClose }) {
         {!selectedImage && (
           <>
             <img 
-              src='/Menu1.jpg' 
+              src='assets/Menu1.webp' 
               className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
-              onClick={() => handleImageClick('/Menu1.jpg')}
+              onClick={() => handleImageClick('assets/Menu1.webp')}
               alt="Menu 1"
             />
             <img 
-              src='/Menu2.jpg' 
+              src='assets/Menu2.webp' 
               className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
-              onClick={() => handleImageClick('/Menu2.jpg')}
+              onClick={() => handleImageClick('assets/Menu2.webp')}
               alt="Menu 2"
             />
           </>

@@ -5,7 +5,8 @@ import ReviewCard from '@/components/ReviewCard';
 import OfferCard from '@/components/OfferCard';
 import MenuModal from '@/components/MenuModal';
 import { useLanguage } from '../context/LanguageContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 // IsActive: Display/Hide the Offer
 // IsLimitedTime: Display/Hide Limited Time Badge
@@ -16,17 +17,35 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, translations } = useLanguage();
 
+  // Preload menu images when the page loads
+  useEffect(() => {
+    const preloadImages = () => {
+      // Preload images for Next.js Image component
+      const imageUrls = ['/assets/Menu1.webp', '/assets/Menu2.webp'];
+      
+      imageUrls.forEach(url => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = url;
+        document.head.appendChild(link);
+      });
+    };
+  
+    preloadImages();
+  }, []);
+
   const displayMenuModal = () => {
     setIsMenuOpen(true);
   };
 
   const Offers = [
-    { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.png', IsActive: true, Countdown: "2000-01-01T23:59:59" }
+    { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2000-01-01T23:59:59" }
   ]
   
   const Reviews = [
-    { id: 1, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.png", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.png" },
-    { id: 2, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.png", Date: "2025/05/03", Stars: 5, Review: "I really like the restaurant and this egyptian cuisine. You have to try it!", Nationality: "/Icons/GermanFlag.png" }
+    { id: 1, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.webp" },
+    { id: 2, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/05/03", Stars: 5, Review: "I really like the restaurant and this egyptian cuisine. You have to try it!", Nationality: "/Icons/GermanFlag.webp" }
   ]
 
   return (
@@ -37,14 +56,16 @@ export default function Home() {
       <main className='max-w-[1200px] mx-auto mb-8 px-8 w-full flex-1'>
         {/* Hero Section */}
         <section className={`hero-section flex flex-col justify-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default relative overflow-visible ${language === 'ar' ? 'items-end text-right' : 'items-start text-left'}`}>
-          {/* Transparent Container with Image */}
           <div className={`absolute top-0 w-[300px] transition-colors duration-300 ease overflow-visible ${language === 'ar' ? 'left-0' : 'right-0'}`}>
             <div className="w-[85%] h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             </div>
-            <img 
-              src='/hero-shot.png' 
+            <Image
+              src='/assets/hero-shot.webp' 
               alt='Mahshi Dish' 
               className='w-[350px] h-[350px] object-contain absolute top-[200px] left-1/2 transform -translate-x-1/2'
+              priority={true}
+              width={350}
+              height={350}
             />
           </div>
           
@@ -68,27 +89,63 @@ export default function Home() {
                 {/* Desktop Title */}
                 <h2 className={`hidden lg:flex text-[2.5rem] text-[#2c3e50] cursor-default font-semibold items-center gap-4 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                   <>
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-8 h-8"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-8 h-8'
+                      width={32}
+                      height={32}
+                    />
                     {translations.about_section.title}
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-8 h-8"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-8 h-8'
+                      width={32}
+                      height={32}
+                    />
                   </>
                 </h2>
 
                 {/* Tablet Title */}
                 <h2 className={`hidden sm:flex lg:hidden text-[2rem] text-[#2c3e50] cursor-default font-semibold items-center gap-3 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                   <>
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-6 h-6"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-6 h-6'
+                      width={24}
+                      height={24}
+                    />
                     {translations.about_section.title}
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-6 h-6"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-6 h-6'
+                      width={24}
+                      height={24}
+                    />
                   </>
                 </h2>
 
                 {/* Mobile Title */}
                 <h2 className={`flex sm:hidden text-[1.5rem] text-[#2c3e50] cursor-default font-semibold items-center gap-2 dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
                   <>
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-5 h-5"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-5 h-5'
+                      width={20}
+                      height={20}
+                    />
                     {translations.about_section.title}
-                    <img src='/Icons/Star2.png' alt="Star icon" className="w-5 h-5"/>
+                    <Image
+                      src='/Icons/Star2.webp'
+                      alt='Star Icon'
+                      className='w-5 h-5'
+                      width={20}
+                      height={20}
+                    />
                   </>
                 </h2>
               </div>
@@ -100,10 +157,12 @@ export default function Home() {
             {/* Image Container */}
             <div className="w-full lg:w-1/2 relative">
               <div className="w-full h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
-                <img 
-                  src='/Banner.jpg' 
-                  alt='Restaurant Interior' 
+                <Image
+                  src='/assets/Banner.webp'
+                  alt='Restaurant Interior'
                   className='w-full h-full object-cover'
+                  width={900}
+                  height={600}
                 />
               </div>
             </div>
@@ -132,10 +191,12 @@ export default function Home() {
               {/* Image Container */}
               <div className="w-full relative">
                 <div className="w-full h-[350px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
-                  <img 
-                    src='/Banner.jpg' 
-                    alt='Restaurant Interior' 
+                  <Image
+                    src='/assets/Banner.webp'
+                    alt='Restaurant Interior'
                     className='w-full h-full object-cover'
+                    width={900}
+                    height={600}
                   />
                 </div>
               </div>
@@ -165,10 +226,12 @@ export default function Home() {
               {/* Image Container */}
               <div className="w-full relative">
                 <div className="w-full h-[250px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
-                  <img 
-                    src='/Banner.jpg' 
-                    alt='Restaurant Interior' 
+                  <Image
+                    src='/assets/Banner.webp'
+                    alt='Restaurant Interior'
                     className='w-full h-full object-cover'
+                    width={900}
+                    height={600}
                   />
                 </div>
               </div>
@@ -197,7 +260,13 @@ export default function Home() {
         <section id="offers" className='mt-24 py-8'>
           <h2 className={`section-title text-[2rem] ${language === 'ar' ? 'text-right' : 'text-left'} text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {translations.offers_section.title} 
-            <img src='/Icons/Star2.png' alt="Star icon" className={`w-8 h-8 ${language === 'ar' ? 'mr-[0.3rem]' : 'ml-[0.3rem]'}`}/>
+            <Image
+              src='/Icons/Star2.webp'
+              alt='Star icon'
+              className={`w-8 h-8 ${language === 'ar' ? 'mr-[0.3rem]' : 'ml-[0.3rem]'}`}
+              width={32}
+              height={32}
+            />
           </h2>
           <div className={`flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {Offers.map((item) => (
@@ -220,7 +289,13 @@ export default function Home() {
         <section className='mt-16 py-8'>
           <h2 className={`section-title text-[2rem] ${language === 'ar' ? 'text-right' : 'text-left'} text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {translations.reviews_section.title} 
-            <img src='/Icons/Star.png' alt="Star icon" className={`w-8 h-8 -mt-[0.2rem] ${language === 'ar' ? 'mr-[0.3rem]' : 'ml-[0.3rem]'}`}/>
+            <Image
+              src='/Icons/Star.webp'
+              alt='Star icon'
+              className={`w-8 h-8 -mt-[0.2rem] ${language === 'ar' ? 'mr-[0.3rem]' : 'ml-[0.3rem]'}`}
+              width={32}
+              height={32}
+            />
           </h2>
           <div className={`flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto cursor-default ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {Reviews.map((item) => (

@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useLanguage } from '../context/LanguageContext';
+import Image from "next/image";
 
 export default function Footer() {
     const { language, translations } = useLanguage();
@@ -32,7 +33,13 @@ export default function Footer() {
                     
                     {/* Branding Section */}
                     <div className={`flex flex-col items-center text-center justify-center max-w-[320px] ${language === 'ar' ? 'ml-auto mr-8 lg:order-2' : 'mr-auto ml-8 lg:order-1'}`}>
-                        <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[100px] h-[100px] mb-[0.5rem] object-contain"/>
+                        <Image
+                            src='/assets/Logo.webp'
+                            alt="SEC Restaurant Logo"
+                            className="w-[100px] h-[100px] mb-[0.5rem] object-contain"
+                            width={100}
+                            height={100}
+                        />
                         <h2 className={`text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
                         <div className="flex gap-[0.8rem] justify-center">
                             <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
@@ -74,7 +81,13 @@ export default function Footer() {
                         
                         {/* Branding Section */}
                         <div className={`flex flex-col items-center text-center justify-center max-w-[280px] ${language === 'ar' ? 'ml-auto mr-6 order-2' : 'mr-auto ml-6 order-1'}`}>
-                            <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[100px] h-[100px] mb-[0.5rem] object-contain"/>
+                            <Image
+                                src='/assets/Logo.webp'
+                                alt="SEC Restaurant Logo"
+                                className="w-[100px] h-[100px] mb-[0.5rem] object-contain"
+                                width={100}
+                                height={100}
+                            />
                             <h2 className={`text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
                             <div className="flex gap-[0.8rem] justify-center">
                                 <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
@@ -97,7 +110,13 @@ export default function Footer() {
                 {/* Mobile Layout - No changes needed as it's stacked vertically */}
                 <div className="block sm:hidden">
                     <div className="Branding flex flex-col items-center text-center space-y-4">
-                        <img src="/Logo.png" alt="SEC Restaurant Logo" className="w-[90px] h-[90px] object-contain"/>
+                        <Image
+                            src='/assets/Logo.webp'
+                            alt="SEC Restaurant Logo"
+                            className="w-[90px] h-[90px] object-contain"
+                            width={90}
+                            height={90}
+                        />
                         <h2 className={`text-[1.2rem] text-[#e74c3c] font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
                         <div className="flex gap-[0.6rem] justify-center">
                             <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">

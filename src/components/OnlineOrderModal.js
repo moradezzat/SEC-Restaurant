@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import Image from 'next/image';
 
 export default function OnlineOrderModal({ isOpen, onClose }) {
     const { language, translations } = useLanguage();
@@ -11,7 +12,13 @@ export default function OnlineOrderModal({ isOpen, onClose }) {
                     <h2 className={`text-[#2c3e50] text-[1.8rem] font-semibold dark:text-[#cecece]`}>
                         {translations.order_form.title}
                     </h2>
-                    <img src="/Icons/Grinning.png" className="w-[2.1rem] h-[2.1rem]" alt="grinning emoji" />
+                    <Image
+                        src="/Icons/Grinning.webp"
+                        alt="Grinning emoji"
+                        className='w-[2.1rem] h-[2.1rem]'
+                        width={33.6}
+                        height={33.6}
+                    />
                 </div>
                 <div className={`flex flex-col gap-4 mt-4 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
                     <p className={`text-gray-400 ${language === 'ar' ? 'text-right leading-relaxed' : 'text-left'}`}>

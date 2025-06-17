@@ -6,13 +6,18 @@ import arTranslations from '../locales/ar.json';
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-    const [language, setLanguage] = useState('en');
-    const [translations, setTranslations] = useState(enTranslations);
+    const [language, setLanguage] = useState(null);
+    const [translations, setTranslations] = useState(null);
 
     useEffect(() => {
-        const savedLanguage = localStorage.getItem('language') || 'en';
-        setLanguage(savedLanguage);
-        setTranslations(savedLanguage === 'ar' ? arTranslations : enTranslations);
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+            setLanguage(savedLanguage);
+            setTranslations(savedLanguage === 'ar' ? arTranslations : enTranslations);
+        } else {
+            setLanguage('en');
+            setTranslations(enTranslations);
+        }
     }, []);
 
     const changeLanguage = (lang) => {
@@ -20,6 +25,10 @@ export function LanguageProvider({ children }) {
         setTranslations(lang === 'ar' ? arTranslations : enTranslations);
         localStorage.setItem('language', lang);
     };
+
+    if (language === null || translations === null) {
+        return null;
+    }
 
     return (
         <LanguageContext.Provider value={{ language, translations, changeLanguage }}>

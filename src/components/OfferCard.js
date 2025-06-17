@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import OfferBadge from "./OfferBadge";
 import OnlineOrderModal from './OnlineOrderModal';
 import { useLanguage } from '../context/LanguageContext';
+import Image from 'next/image';
 
-export default function OfferCard({ Image, Name, Content, Price, IsActive, Discount, countdown, IsLimitedTime }) {
+export default function OfferCard({ Image: imageSrc, Name, Content, Price, IsActive, Discount, countdown, IsLimitedTime }) {
     const [showOffer, setShowOffer] = useState(true);
     const [isExpired, setIsExpired] = useState(false);
     const [isOnlineOrderModalOpen, setIsOnlineOrderModalOpen] = useState(false);
@@ -67,7 +68,13 @@ export default function OfferCard({ Image, Name, Content, Price, IsActive, Disco
                 onClose={() => setIsOnlineOrderModalOpen(false)} 
             />
             <div className="dark:bg-[#212121] offer-card transition-colors duration-300 ease">
-                <img src={Image} alt={Name} className="w-full h-[200px] object-cover relative z-[1]" />
+                <Image
+                    src={imageSrc}
+                    alt={Name}
+                    className="w-full h-[200px] object-cover relative z-[1]"
+                    width={500}
+                    height={200}
+                />
                 <OfferBadge 
                     discount={Discount} 
                     isLimitedTime={IsLimitedTime} 

@@ -45,7 +45,7 @@ export const metadata = {
     locale: "ar_EG",
     images: [
       {
-        url: "/Banner.jpg",
+        url: "assets/Banner.webp",
         alt: "SEC Restaurant - Authentic Egyptian Cuisine"
       }
     ]
@@ -54,7 +54,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "SEC Restaurant",
     description: "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes made with fresh ingredients.",
-    images: ["/Banner.jpg"]
+    images: ["assets/Banner.webp"]
   },
   robots: {
     index: true,
@@ -94,7 +94,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Restaurant",
               "name": "SEC Restaurant",
-              "image": "/Banner.jpg",
+              "image": "assets/Banner.webp",
               "description": "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes like hawawshi, molokhia, tajin pasta, and grilled kofta made with fresh ingredients.",
               "servesCuisine": "Egyptian",
               "priceRange": "$$",
