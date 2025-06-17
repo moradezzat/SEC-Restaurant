@@ -38,11 +38,16 @@ export default function Navbar() {
         });
     };
 
-    const handleNavClick = (e) => {
+    const handleNavClick = (e, action) => {
         e.preventDefault();
-        const href = e.currentTarget.getAttribute('href');
-        if (href === '/') {
-            window.location.href = href;
+        if (action === 'home') {
+            window.location.href = '/';
+        } else if (action === 'menu') {
+            displayMenuModal();
+        } else if (action === 'contact') {
+            displayContactModal();
+        } else if (action === 'about') {
+            scrollToAbout();
         }
     };
 
@@ -57,10 +62,10 @@ export default function Navbar() {
                             <span className={`block mr-auto w-[50%] h-[3px] bg-[#e74c3c] rounded-[3px] transition-all duration-300 ease`}></span>
                         </div>
                         <div className="aContainer flex gap-8 items-center flex-row-reverse">
-                            <a href="/" onClick={handleNavClick} className="no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.home}</a>
-                            <a onClick={displayMenuModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.menu}</a>
-                            <a onClick={displayContactModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.contact}</a>
-                            <a onClick={scrollToAbout} className='cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]'>{translations.navbar.about}</a>
+                            <a href="/" onClick={(e) => handleNavClick(e, 'home')} className="no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.home}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'menu')} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.menu}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'contact')} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.contact}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'about')} className='cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]'>{translations.navbar.about}</a>
                         </div>
                         <div className="text-[1.5rem] font-ruqaa text-[#e74c3c] cursor-default">{translations.navbar.brand}</div>
                     </>
@@ -68,10 +73,10 @@ export default function Navbar() {
                     <>
                         <div className="text-[1.5rem] font-semibold text-[#e74c3c] cursor-default">{translations.navbar.brand}</div>
                         <div className="aContainer flex gap-8 items-center">
-                            <a href="/" onClick={handleNavClick} className="no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.home}</a>
-                            <a onClick={displayMenuModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.menu}</a>
-                            <a onClick={displayContactModal} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.contact}</a>
-                            <a onClick={scrollToAbout} className='cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]'>{translations.navbar.about}</a>
+                            <a href="/" onClick={(e) => handleNavClick(e, 'home')} className="no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.home}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'menu')} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.menu}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'contact')} className="cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]">{translations.navbar.contact}</a>
+                            <a href='#' onClick={(e) => handleNavClick(e, 'about')} className='cursor-pointer no-underline text-[#333333] font-medium transition-all duration-300 ease hover:text-[#e74c3c] dark:text-[#e1e1e1] dark:hover:text-[#e74c3c]'>{translations.navbar.about}</a>
                         </div>
                         <div className={`flex flex-col justify-between w-[30px] h-[21px] cursor-pointer ${language === 'ar' ? 'mr-8' : 'ml-8'}`} onClick={displaySidenav}> 
                             <span className={`block ml-auto w-full h-[3px] bg-[#e74c3c] rounded-[3px] transition-all duration-300 ease`}></span>
