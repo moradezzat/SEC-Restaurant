@@ -46,6 +46,8 @@ export default function Footer() {
                                 <FontAwesomeIcon icon={faTiktok} size="lg" className="hover:text-[#2c3e50]"/>
                             </a>
                             <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to Facebook profile" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
+                                <FontAwesomeIcon icon={faFacebookF} size="lg"/>
+                            </a>
                             <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to our Facebook page" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                 <FontAwesomeIcon icon={faFacebookF} size="lg"/> 
                             </a>
