@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { LanguageProvider } from '../context/LanguageContext';
+import { DEFAULT_THEME } from '../config';
 config.autoAddCss = false;
 
 const ruqaa = localFont({
@@ -77,8 +78,8 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.getItem('theme') === 'dark' ||
-                    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                const theme = localStorage.getItem('theme') || '${DEFAULT_THEME}';
+                if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
                 } else {
                   document.documentElement.classList.remove('dark');
@@ -111,6 +112,18 @@ export default function RootLayout({ children }) {
               }
             })
           }}
+        />
+        <link
+          rel="preload"
+          href="https://ssec.vercel.app/_vercel/speed-insights/script.js"
+          as="script"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://ssec.vercel.app/_vercel/insights/script.js"
+          as="script"
+          crossOrigin="anonymous"
         />
       </head>
       <body className={`${ruqaa.variable} ${rubik.variable} antialiased dark:bg-[#121212]`}>

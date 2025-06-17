@@ -62,10 +62,12 @@ export default function Home() {
             <Image
               src='/assets/hero-shot.webp' 
               alt='Mahshi Dish' 
-              className='w-[350px] h-[350px] object-contain absolute top-[200px] left-1/2 transform -translate-x-1/2'
-              priority={true}
               width={350}
               height={350}
+              priority
+              sizes="(max-width: 600px) 90vw, 350px"
+              style={{ width: '100%', height: 'auto', maxWidth: 350, maxHeight: 350 }}
+              className='object-contain absolute top-[200px] left-1/2 transform -translate-x-1/2'
             />
           </div>
           

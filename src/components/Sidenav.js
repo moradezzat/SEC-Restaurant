@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import ContactModal from './ContactModal';
 import { useLanguage } from '../context/LanguageContext';
+import { DEFAULT_THEME } from '../config';
 
 export default function Sidenav({ isOpen, onClose }) {
-    const [selectedMode, setSelectedMode] = useState('light');
+    const [selectedMode, setSelectedMode] = useState(DEFAULT_THEME);
     const [isContactOpen, setIsContactOpen] = useState(false);
     const [showSidebar, setShowSidebar] = useState(isOpen);
     const [isClosing, setIsClosing] = useState(false);
@@ -24,6 +25,16 @@ export default function Sidenav({ isOpen, onClose }) {
             }, 250);
         }
     }, [isOpen]);
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        setSelectedMode(savedTheme || DEFAULT_THEME);
+        if (savedTheme === 'dark' || (!savedTheme && DEFAULT_THEME === 'dark')) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
 
     const selectMode = (option) => {
         setSelectedMode(option);
@@ -43,17 +54,6 @@ export default function Sidenav({ isOpen, onClose }) {
     const displayContactModal = () => {
         setIsContactOpen(true);
     };
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme) {
-            setSelectedMode(savedTheme);
-        } else {
-            setSelectedMode(prefersDark ? 'dark' : 'light');
-        }
-    }, []);
 
     if (!showSidebar) return null;
 
@@ -121,8 +121,8 @@ export default function Sidenav({ isOpen, onClose }) {
                                         onClick={() => selectMode('light')}>
                                         {translations.side_nav.light}
                                     </button>
-                                    <button 
-                                        className={`flex-1 p-[0.8rem] border-[1px] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] ${selectedMode === 'dark' ? 'bg-[#e74c3c] text-white border-[#e74c3c] hover:text-white' : 'bg-white text-[#2c3e50] border-[#dddddd]'}`}
+                                    <button
+                                        className={`flex-1 p-[0.8rem] border-[1px] rounded-[5px] text-[1rem] text-[#2c3e50] cursor-pointer transition-all duration-300 ease hover:border-[#e74c3c] hover:text-[#e74c3c] ${selectedMode === 'dark' ? 'bg-[#e74c3c] text-white border-[#e74c3c] hover:text-white' : 'bg-white text-[#2c3e50] border-[#dddddd] dark:bg-[#1a1a1a] dark:text-[#dddddd] dark:border-[#5c5c5c] hover:dark:text-[#e73c3c] dark:hover:border-[#e74c3c]'}`}
                                         onClick={() => selectMode('dark')}>
                                         {translations.side_nav.dark}
                                     </button>

@@ -20,7 +20,7 @@ export default function Navbar() {
     };
 
     const displaySidenav = () => {
-        setIsSidenavOpen(true);
+        setIsSidenavOpen(!isSidenavOpen);
     };
 
     const scrollToAbout = () => {

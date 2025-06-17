@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import enTranslations from '../locales/en.json';
 import arTranslations from '../locales/ar.json';
+import { DEFAULT_LANGUAGE } from '../config';
 
 const LanguageContext = createContext();
 
@@ -15,8 +16,8 @@ export function LanguageProvider({ children }) {
             setLanguage(savedLanguage);
             setTranslations(savedLanguage === 'ar' ? arTranslations : enTranslations);
         } else {
-            setLanguage('en');
-            setTranslations(enTranslations);
+            setLanguage(DEFAULT_LANGUAGE);
+            setTranslations(DEFAULT_LANGUAGE === 'ar' ? arTranslations : enTranslations);
         }
     }, []);
 
