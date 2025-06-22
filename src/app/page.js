@@ -40,7 +40,8 @@ export default function Home() {
   };
 
   const Offers = [
-    { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2000-01-01T23:59:59" }
+    { id: 1, Name: 'طاجن ملوخية', Content: `طاجن ملوخية + سلطات + عيش بلدي`, Price: '25', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2025-06-21T23:22:00" }
+    // { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2000-01-01T23:59:59" }
   ]
   
   const Reviews = [
