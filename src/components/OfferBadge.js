@@ -74,7 +74,7 @@ export default function OfferBadge({ discount, isLimitedTime, countdown }) {
                 %{discount} {translations.offers_badge.off}
             </div>
         );
-        rightPosition += language === 'ar' ? 5.6 : 5.2; // Move the next badge 4.5rem to the left
+        rightPosition += language === 'ar' ? 7.1 : 6.5; // Move the next badge 4.5rem to the left
     }
 
     // Integrate Limited Time Badge

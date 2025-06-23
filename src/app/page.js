@@ -5,7 +5,7 @@ import ReviewCard from '@/components/ReviewCard';
 import OfferCard from '@/components/OfferCard';
 import MenuModal from '@/components/MenuModal';
 import { useLanguage } from '../context/LanguageContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 // IsActive: Display/Hide the Offer
@@ -16,11 +16,28 @@ import Image from 'next/image';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, translations } = useLanguage();
+  const sliderRef = useRef(null);
+  const animationRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  const Offers = [
+    { id: 1, Name: 'طاجن ملوخية', Content: `طاجن ملوخية فقط`, Price: '35', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2025-06-24T23:22:00", Discount: 28.57 }
+    // { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2000-01-01T23:59:59" }
+  ];
+  
+  const Reviews = [
+    { id: 1, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.webp" },
+    { id: 2, Username: `Stratis Adalis`, Profile: "/Icons/User1.webp", Date: "2025/05/03", Stars: 5, Review: "Amazing food and service. True Egyptian cousine! Highly recommended it", Nationality: "/Icons/GermanFlag.webp" },
+    { id: 3, Username: `Noor Aden`, Profile: "/Icons/User.webp", Date: "2025/06/22", Stars: 5, Review: "Excellent food, excellent service, and success after success.", Nationality: "/Icons/EgyptianFlag.webp" },
+    { id: 4, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.webp" },
+    { id: 5, Username: `Stratis Adalis`, Profile: "/Icons/User1.webp", Date: "2025/05/03", Stars: 5, Review: "Amazing food and service. True Egyptian cousine! Highly recommended it", Nationality: "/Icons/GermanFlag.webp" },
+    { id: 6, Username: `Noor Aden`, Profile: "/Icons/User.webp", Date: "2025/06/22", Stars: 5, Review: "Excellent food, excellent service, and success after success.", Nationality: "/Icons/EgyptianFlag.webp" }
+  ];
 
   // Preload menu images when the page loads
   useEffect(() => {
     const preloadImages = () => {
-      // Preload images for Next.js Image component
       const imageUrls = ['/assets/Menu1.webp', '/assets/Menu2.webp'];
       
       imageUrls.forEach(url => {
@@ -35,29 +52,92 @@ export default function Home() {
     preloadImages();
   }, []);
 
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const isRTL = language === 'ar';
+    if (isRTL) {
+      slider.scrollLeft = slider.scrollWidth - slider.clientWidth;
+    } else {
+      slider.scrollLeft = 0;
+    }
+  }, [language]);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const scrollSpeed = 1;
+    const isRTL = language === 'en';
+    let running = true;
+    const cardWidth = 350;
+    const reviewCount = Reviews.length;
+    const totalCards = reviewCount * 2;
+    const maxScroll = cardWidth * reviewCount;
+
+    function animate() {
+      if (!slider || !running) return;
+      if (!isHovered) {
+        if (isRTL) {
+          if (slider.scrollLeft <= 0) {
+            slider.scrollLeft = maxScroll;
+          } else {
+            slider.scrollLeft -= scrollSpeed;
+            if (slider.scrollLeft < cardWidth * 0.5) {
+              slider.scrollLeft = maxScroll + slider.scrollLeft;
+            }
+          }
+        } else {
+          if (slider.scrollLeft >= maxScroll) {
+            slider.scrollLeft = 0;
+          } else {
+            slider.scrollLeft += scrollSpeed;
+            if (slider.scrollLeft > maxScroll + cardWidth * 0.5) {
+              slider.scrollLeft = slider.scrollLeft - maxScroll;
+            }
+          }
+        }
+      }
+      animationRef.current = requestAnimationFrame(animate);
+    }
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      running = false;
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [language, isHovered, Reviews.length]);
+
+  useEffect(() => {
+    // Check dark mode on mount and when theme changes
+    const checkDark = () => setIsDark(document.documentElement.classList.contains('dark'));
+    checkDark();
+    window.addEventListener('storage', checkDark);
+    // Listen for class changes (for theme toggles)
+    const observer = new MutationObserver(checkDark);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => {
+      window.removeEventListener('storage', checkDark);
+      observer.disconnect();
+    };
+  }, []);
+
   const displayMenuModal = () => {
     setIsMenuOpen(true);
   };
 
-  const Offers = [
-    { id: 1, Name: 'طاجن ملوخية', Content: `طاجن ملوخية فقط`, Price: '35', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2025-06-24T23:22:00", Discount: 28.57 }
-    // { id: 1, Name: `${translations.offers_section.noOffers}`, Content: `${translations.offers_section.noOffersContent}`, Price: '0', Image: '/assets/No_Offers.webp', IsActive: true, Countdown: "2000-01-01T23:59:59" }
-  ]
-  
-  const Reviews = [
-    { id: 1, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/03/01", Stars: 5, Review: "دي اول مره اجرب الأكل عندكم وبجد عاوز اشكر حضرتك عالأكل, حاجه في منتهي الروعه ماشاء الله, إن شاء الله مش هتبقي اخر مره اجي عندكم.", Nationality: "/Icons/EgyptianFlag.webp" },
-    { id: 2, Username: `${translations.reviews_section.unknown}`, Profile: "/Icons/User.webp", Date: "2025/05/03", Stars: 5, Review: "I really like the restaurant and this egyptian cuisine. You have to try it!", Nationality: "/Icons/GermanFlag.webp" }
-  ]
-
   return (
-    <div className='bg-[#f5f5f5] text-[#333333] overflow-x-hidden dark:bg-[#0f0f0f] min-h-screen flex flex-col transition-colors duration-300 ease'>
+    <div className='bg-[#f5f5f5] text-[#333333] dark:bg-[#0f0f0f] min-h-screen flex flex-col transition-colors duration-300 ease'>
       <Navbar/>
       <MenuModal isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
 
       <main className='max-w-[1200px] mx-auto mb-8 px-8 w-full flex-1'>
         {/* Hero Section */}
-        <section className={`hero-section flex flex-col justify-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default relative overflow-visible ${language === 'ar' ? 'items-end text-right' : 'items-start text-left'}`}>
-          <div className={`absolute top-0 w-[300px] transition-colors duration-300 ease overflow-visible ${language === 'ar' ? 'left-0' : 'right-0'}`}>
+        <section className={`hero-section flex flex-col justify-center pt-[13rem] pb-0 pl-0 pr-0 mt-0 cursor-default relative ${language === 'ar' ? 'items-end text-right' : 'items-start text-left'}`}>
+          <div className={`absolute top-0 w-[300px] transition-colors duration-300 ease ${language === 'ar' ? 'left-0' : 'right-0'}`}>
             <div className="w-[85%] h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
             </div>
             <Image
@@ -159,7 +239,7 @@ export default function Home() {
           <div className={`hidden lg:flex flex-col lg:flex-row gap-12 items-stretch ${language === 'ar' ? 'lg:flex-row-reverse' : ''}`}>
             {/* Image Container */}
             <div className="w-full lg:w-1/2 relative">
-              <div className="w-full h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+              <div className="w-full h-[400px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg">
                 <Image
                   src='/assets/Banner.webp'
                   alt='Restaurant Interior'
@@ -193,7 +273,7 @@ export default function Home() {
             <div className={`flex flex-col gap-8 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
               {/* Image Container */}
               <div className="w-full relative">
-                <div className="w-full h-[350px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+                <div className="w-full h-[350px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg">
                   <Image
                     src='/assets/Banner.webp'
                     alt='Restaurant Interior'
@@ -228,7 +308,7 @@ export default function Home() {
             <div className={`flex flex-col gap-6 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
               {/* Image Container */}
               <div className="w-full relative">
-                <div className="w-full h-[250px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg overflow-hidden">
+                <div className="w-full h-[250px] bg-[#2c3e50] shadow-2xl transition-colors duration-300 ease rounded-lg">
                   <Image
                     src='/assets/Banner.webp'
                     alt='Restaurant Interior'
@@ -288,7 +368,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Reviews Section */}
+        {/* Reviews Section - Slider */}
         <section className='mt-16 py-8'>
           <h2 className={`section-title text-[2rem] ${language === 'ar' ? 'text-right' : 'text-left'} text-[#2c3e50] mb-4 cursor-default font-semibold flex items-center dark:text-[#d3d3d3] transition-colors duration-300 ease ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
             {translations.reviews_section.title} 
@@ -300,21 +380,62 @@ export default function Home() {
               height={32}
             />
           </h2>
-          <div className={`flex flex-wrap gap-8 px-4 justify-start max-w-[1200px] mx-auto cursor-default ${language === 'ar' ? 'flex-row-reverse' : ''}`}>
-            {Reviews.map((item) => (
-              <ReviewCard
-                key={item.id}
-                Username={item.Username}
-                Profile={item.Profile}
-                Date={item.Date}
-                Stars={item.Stars}
-                Review={item.Review}
-                Flag={item.Nationality}
-              />
-            ))}
+          
+          {/* Slider Container */}
+          <div className="relative w-full h-auto">
+            {/* Fade shadows - LTR */}
+            <div className={`absolute top-0 left-0 w-20 h-full z-10 pointer-events-none ${language === 'ar' ? 'hidden' : ''}`}> 
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#f5f5f5] via-[#f5f5f5] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-0' : 'opacity-100'}`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-[#0f0f0f] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}></div>
+            </div>
+            <div className={`absolute top-0 right-0 w-20 h-full z-10 pointer-events-none ${language === 'ar' ? 'hidden' : ''}`}> 
+              <div className={`absolute inset-0 bg-gradient-to-l from-[#f5f5f5] via-[#f5f5f5] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-0' : 'opacity-100'}`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-l from-[#0f0f0f] via-[#0f0f0f] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}></div>
+            </div>
+            {/* Fade shadows - RTL */}
+            <div className={`absolute top-0 right-0 w-20 h-full z-10 pointer-events-none ${language === 'ar' ? '' : 'hidden'}`}> 
+              <div className={`absolute inset-0 bg-gradient-to-l from-[#f5f5f5] via-[#f5f5f5] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-0' : 'opacity-100'}`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-l from-[#0f0f0f] via-[#0f0f0f] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}></div>
+            </div>
+            <div className={`absolute top-0 left-0 w-20 h-full z-10 pointer-events-none ${language === 'ar' ? '' : 'hidden'}`}> 
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#f5f5f5] via-[#f5f5f5] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-0' : 'opacity-100'}`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-[#0f0f0f] to-transparent transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}></div>
+            </div>
+            
+            {/* Scrolling container */}
+            <div 
+              ref={sliderRef}
+              className="flex px-4 w-full h-[280px] cursor-default"
+              style={{
+                overflowX: 'scroll',
+                scrollBehavior: 'auto',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+              {[...Reviews, ...Reviews].map((item, idx) => (
+                <div key={item.id + '-' + idx} className="flex-shrink-0 w-[350px] h-auto">
+                  <ReviewCard
+                    Username={item.Username}
+                    Profile={item.Profile}
+                    Date={item.Date}
+                    Stars={item.Stars}
+                    Review={item.Review}
+                    Flag={item.Nationality}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
-        
       </main>
       <Footer/>
     </div>

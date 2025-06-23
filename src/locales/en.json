@@ -4,7 +4,9 @@
         "home": "Home",
         "menu": "Menu",
         "contact": "Contact us",
-        "about": "About us"
+        "about": "About us",
+        "open": "OPEN",
+        "closed": "CLOSED"
     },
     "side_nav": {
         "title": "Settings",
@@ -33,7 +35,9 @@
     },
     "footer": {
         "branding": "SEC Restaurant",
-        "copyright": "© 2025 SEC Restaurant. All rights reserved.",
+        "copyright": "\u00a9 2025 SEC Restaurant. All rights reserved.",
+        "open": "OPEN",
+        "closed": "CLOSED",
         "locationSection": {
             "title": "Location",
             "geoLocation": "Port Said St, Bab El-Shaareya Sq, Cairo, EG",

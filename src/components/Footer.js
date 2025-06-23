@@ -3,10 +3,34 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { useLanguage } from '../context/LanguageContext';
 import Image from "next/image";
+import WorkingHours from '../context/WorkingHours';
 
 export default function Footer() {
     const { language, translations } = useLanguage();
     const Location = "https://www.google.com/maps/place/%D9%85%D8%B7%D8%B9%D9%85+%D8%B3%D8%AA+%D8%A7%D9%84%D9%83%D9%84%E2%80%AD/@30.0565194,31.2586596,19.25z/data=!4m6!3m5!1s0x145841007e126b75:0xb03469607d85e542!8m2!3d30.0566518!4d31.2588589!16s%2Fg%2F11lnhmhq3c?entry=tts&g_ep=EgoyMDI1MDIwOS4wIPu8ASoASAFQAw%3D%3D";
+    const now = new Date();
+    const dayName = now.toLocaleDateString('en-US', { weekday: 'long' });
+    const todayHours = WorkingHours[dayName];
+    let isOpen = false;
+    if (todayHours) {
+        if (todayHours.open24) {
+            isOpen = true;
+        } else if (todayHours.open && todayHours.close) {
+            const [openHour, openMinute] = todayHours.open.split(':').map(Number);
+            const [closeHour, closeMinute] = todayHours.close.split(':').map(Number);
+            const openTime = new Date(now);
+            openTime.setHours(openHour, openMinute, 0, 0);
+            let closeTime = new Date(now);
+            closeTime.setHours(closeHour, closeMinute, 0, 0);
+            // If close is 00:00, treat as midnight next day
+            if (todayHours.close === '00:00') {
+                closeTime.setDate(closeTime.getDate() + 1);
+            }
+            isOpen = now >= openTime && now < closeTime;
+        }
+    }
+    const statusText = isOpen ? translations.footer.open : translations.footer.closed;
+    const statusColor = isOpen ? 'text-green-400' : 'text-red-400';
 
     return (
         <div className="bg-[#2c3e50] text-white pt-8 pr-4 pb-4 pl-4 mt-16 dark:bg-[#1f2327]">
@@ -40,13 +64,11 @@ export default function Footer() {
                             width={100}
                             height={100}
                         />
-                        <h2 className={`text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
+                        <h2 className={`text-2xl text-[#e74c3c] font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
+                        <span className={`text-base font-bold mb-4 ${statusColor}`}>{statusText}</span>
                         <div className="flex gap-[0.8rem] justify-center">
                             <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" aria-label="Link to TikTok profile" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                 <FontAwesomeIcon icon={faTiktok} size="lg" className="hover:text-[#2c3e50]"/>
-                            </a>
-                            <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to Facebook profile" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
-                                <FontAwesomeIcon icon={faFacebookF} size="lg"/>
                             </a>
                             <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to our Facebook page" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                 <FontAwesomeIcon icon={faFacebookF} size="lg"/> 
@@ -91,18 +113,19 @@ export default function Footer() {
                                 width={100}
                                 height={100}
                             />
-                            <h2 className={`text-2xl text-[#e74c3c] mb-4 font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
+                            <h2 className={`text-2xl text-[#e74c3c] font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
+                            <span className={`text-base font-bold mb-4 ${statusColor}`}>{statusText}</span>
                             <div className="flex gap-[0.8rem] justify-center">
-                                <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
+                                <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" aria-label="Link to our Tiktok page" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                     <FontAwesomeIcon icon={faTiktok} size="lg"/>
                                 </a>
-                                <a href="https://www.facebook.com/marium8485" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
+                                <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to our Facebook page" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                     <FontAwesomeIcon icon={faFacebookF} size="lg"/> 
                                 </a>
-                                <a href="https://instagram.com/sett.el.kol?igsh=MWJuZzdmNGU3NWhzMA==" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
+                                <a href="https://instagram.com/sett.el.kol?igsh=MWJuZzdmNGU3NWhzMA==" target="_blank" aria-label="Link to our Instagram page" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                     <FontAwesomeIcon icon={faInstagram} size="lg"/>
                                 </a>
-                                <a href="https://chat.whatsapp.com/Hnh0Ueh42eJLnKrhlcAEQs" target="_blank" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
+                                <a href="https://chat.whatsapp.com/Hnh0Ueh42eJLnKrhlcAEQs" target="_blank" aria-label="Link to our Whatsapp group" className="w-[35px] h-[35px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1] will-change-transform">
                                     <FontAwesomeIcon icon={faWhatsapp} size="lg"/>
                                 </a>
                             </div>
@@ -121,17 +144,18 @@ export default function Footer() {
                             height={90}
                         />
                         <h2 className={`text-[1.2rem] text-[#e74c3c] font-semibold cursor-default ${language === 'ar' ? 'font-ruqaa' : ''}`}>{translations.footer.branding}</h2>
+                        <span className={`text-base font-bold ${statusColor}`}>{statusText}</span>
                         <div className="flex gap-[0.6rem] justify-center">
-                            <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
+                            <a href="https://www.tiktok.com/@maryemahmed00" target="_blank" aria-label="Link to our Tiktok page" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
                                 <FontAwesomeIcon icon={faTiktok} size="sm"/>
                             </a>
-                            <a href="https://www.facebook.com/marium8485" target="_blank" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
+                            <a href="https://www.facebook.com/marium8485" target="_blank" aria-label="Link to our Facebook page" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
                                 <FontAwesomeIcon icon={faFacebookF} size="sm"/> 
                             </a>
-                            <a href="https://instagram.com/sett.el.kol?igsh=MWJuZzdmNGU3NWhzMA==" target="_blank" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
+                            <a href="https://instagram.com/sett.el.kol?igsh=MWJuZzdmNGU3NWhzMA==" target="_blank" aria-label="Link to our Instagram page" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
                                 <FontAwesomeIcon icon={faInstagram} size="sm"/>
                             </a>
-                            <a href="https://chat.whatsapp.com/Hnh0Ueh42eJLnKrhlcAEQs" target="_blank" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
+                            <a href="https://chat.whatsapp.com/Hnh0Ueh42eJLnKrhlcAEQs" target="_blank" aria-label="Link to our Whatsapp group" className="w-[32px] h-[32px] rounded-[50%] bg-[#34495e] dark:bg-[#363b41] flex items-center justify-center text-white no-underline transition-all duration-300 ease hover:bg-[#e74c3c] dark:hover:bg-[#e74c3c] hover:scale-[1.1]">
                                 <FontAwesomeIcon icon={faWhatsapp} size="sm"/>
                             </a>
                         </div>

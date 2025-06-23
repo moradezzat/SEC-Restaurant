@@ -239,9 +239,9 @@
     }
 }
 
-@media screen and (max-width: 580px) {
+@media (max-width: 800px) {
     .aContainer {
-        display: none
+        display: none;
     }
 }
 
@@ -305,17 +305,22 @@
 }
 
 @media screen and (max-width: 388px) {
-    .section-title {
-        font-size: 1.7rem;
+    .offer-badges {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: auto;
     }
-
-    .ReviewCard {
-        width: 250px;
-    }
-
-    .offer-card {
-        width: 250px;
-        flex: 0 0 250px;
+    .offer-badges > .discount-badge,
+    .offer-badges > .offer-badge {
+        position: static !important;
+        right: unset !important;
+        top: unset !important;
+        margin: 0;
     }
 }
 
@@ -407,9 +412,12 @@
     }
 }
 
-@media screen and (max-width: 326px) {
+@media screen and (max-width: 325px) {
     .title {
         font-size: 2rem;
+    }
+    .navBranding {
+        font-size: 1.4rem;
     }
 }
 
