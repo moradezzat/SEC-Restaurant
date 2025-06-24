@@ -16,7 +16,7 @@ export default function ReviewCard({ Username, Profile, Date, Stars, Review, Fla
     const isRTL = language === 'ar';
 
     return(
-        <div className={`ReviewCard bg-white rounded-xl h-[16rem] p-6 shadow-md transition-all duration-300 ease w-[300px] flex flex-col flex-none hover:shadow-lg will-change-transform dark:bg-[#1e1e1e] ${isRTL ? 'rtl' : 'ltr'}`}>
+        <div className={`ReviewCard bg-white rounded-xl  p-6 shadow-md transition-all duration-300 ease w-[300px] flex flex-col flex-none hover:shadow-lg will-change-transform dark:bg-[#1e1e1e] ${isRTL ? 'rtl' : 'ltr'}`}>
             <div className={`flex items-center mb-2 gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <Image 
                     src={Profile}
