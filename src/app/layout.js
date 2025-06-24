@@ -30,8 +30,7 @@ const rubik = localFont({
     { path: '../../public/Fonts/Rubik/Rubik-ExtraBoldItalic.ttf', weight: '800', style: 'italic' },
     { path: '../../public/Fonts/Rubik/Rubik-BlackItalic.ttf', weight: '900', style: 'italic' }
   ],
-  variable: '--font-rubik',
-  display: 'swap',
+  variable: '--font-rubik'
 });
 
 export const metadata = {
@@ -61,9 +60,7 @@ export default function RootLayout({ children }) {
         />
         {/* Vercel Analytics & Insights Related Links */}
         <link rel="preload" href="https://ssec.vercel.app/_vercel/speed-insights/script.js" as="script" crossOrigin="anonymous" />
-        <link rel="preload" href="https://ssec.vercel.app/_vercel/insights/script.js" as="script" crossOrigin="anonymous" />
-        <link rel="preload" href="/Fonts/Rubik/Rubik-Regular.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-      </head>
+        <link rel="preload" href="https://ssec.vercel.app/_vercel/insights/script.js" as="script" crossOrigin="anonymous" />      </head>
       <body className={`${ruqaa.variable} ${rubik.variable} antialiased dark:bg-[#121212]`}>
         <LanguageProvider>
           {children}
