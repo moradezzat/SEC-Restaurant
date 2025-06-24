@@ -143,10 +143,23 @@ export default function RootLayout({ children }) {
           "@context": "https://schema.org",
           "@type": "Restaurant",
           "name": "مطعم ست الكل",
+          "url": "https://ssec.vercel.app/",
+          "image": "https://i.ibb.co/hJXLcW9d/IMG-9862.jpg",
+          "servesCuisine": "Egyptian",
+          "priceRange": "$$",
+          "telephone": "+201028154813",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "5",
             "reviewCount": 3
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "شارع بورسعيد امام شركة وي",
+            "addressLocality": "باب الشعرية",
+            "addressRegion": "القاهرة",
+            "addressCountry": "EG",
+            "postalCode": "4333001"
           },
           "review": [
             {
