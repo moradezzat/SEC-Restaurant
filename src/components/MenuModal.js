@@ -29,7 +29,7 @@ export default function MenuModal({ isOpen, onClose }) {
           <img 
             src={selectedImage} 
             className='max-w-[90%] max-h-[85vh] block rounded-[10px] shadow-md cursor-pointer transition-all duration-300 ease-in-out'
-            alt="Enlarged menu"
+            alt="منيو مطعم ست الكل مكبر"
           />
         )}
         
@@ -40,13 +40,13 @@ export default function MenuModal({ isOpen, onClose }) {
               src='assets/Menu1.webp' 
               className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('assets/Menu1.webp')}
-              alt="Menu 1"
+              alt="المنيو الأول لمطعم ست الكل"
             />
             <img 
               src='assets/Menu2.webp' 
               className='max-w-[45%] max-h-[80vh] block rounded-[10px] shadow-md flex-none cursor-pointer hover:scale-[1.01] transition-transform duration-300 ease-in-out'
               onClick={() => handleImageClick('assets/Menu2.webp')}
-              alt="Menu 2"
+              alt="المنيو الثاني لمطعم ست الكل"
             />
           </>
         )}

@@ -34,9 +34,9 @@ const rubik = localFont({
 });
 
 export const metadata = {
-  title: "SEC Restaurant",
-  description: "Experience the best Egyptian food restaurant in Egypt. Enjoy traditional dishes like hawawshi, molokhia, tajin pasta, and grilled kofta made with fresh ingredients.",
-  keywords: "مطعم ست الكل, اكل مصري, مطعم مصري, sec restaurant, egyptian restaurant, egyptian food",
+  title: "مطعم ست الكل",
+  description: "جرب أفضل واشهي الأكلات من مطعم ست الكل في مصر. استمتع بالأكلات التقليدية زي الحواوشي, والملوخية, وطاجن المكرونة, والكفتة المشوية الي معمولة من مكونات طازجة",
+  keywords: "مطعم ست الكل, اكل مصري, مطعم مصري, set el kol restaurant, egyptian restaurant, egyptian food",
 };
 
 export default function RootLayout({ children }) {
@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
           "sameAs": ["https://www.facebook.com/marium8485", "https://www.instagram.com/sett.el.kol?igsh=MWJuZzdmNGU3NWhzMA%3D%3D", "https://chat.whatsapp.com/Hnh0Ueh42eJLnKrhlcAEQs", "https://www.tiktok.com/@maryemahmed00"],
           "logo": "https://i.ibb.co/ym6LV7yJ/Logo.png",
           "name": "مطعم ست الكل",
-          "alternateName": "SEC Restaurant",
+          "alternateName": "Set El-Kol Restaurant",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "شارع بورسعيد امام شركة وي",
@@ -227,23 +227,19 @@ export default function RootLayout({ children }) {
           ]
         }) }} />
 
-        {/* OpenGraphs */}
-
-        {/* Basic */}
+        {/* OpenGraph */}
         <meta property="og:title" content="مطعم ست الكل" />
         <meta property="og:description" content="مطعم ست الكل للأكلات المصرية" />
         <meta property="og:url" content="https://ssec.vercel.app" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ar_EG" />
         <meta property="og:site_name" content="مطعم ست الكل" />
-
-        {/* Image */}
-        {/* <meta property="og:image" content="" />
-        <meta property="og:image:secure_url" content="" />
+        <meta property="og:image" content="/assets/openGraph image.png" />
+        <meta property="og:image:secure_url" content="/assets/openGraph image.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="صورة مطعم ست الكل" /> */}
+        <meta property="og:image:alt" content="صورة مطعم ست الكل" />
 
         {/* Vercel Analytics & Insights Related Links */}
         <link rel="preload" href="https://ssec.vercel.app/_vercel/speed-insights/script.js" as="script" crossOrigin="anonymous" />

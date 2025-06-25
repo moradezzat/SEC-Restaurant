@@ -59,7 +59,7 @@ export default function Footer() {
                     <div className={`flex flex-col items-center text-center justify-center max-w-[320px] ${language === 'ar' ? 'ml-auto mr-8 lg:order-2' : 'mr-auto ml-8 lg:order-1'}`}>
                         <Image
                             src='/assets/Logo.webp'
-                            alt="SEC Restaurant Logo"
+                            alt="لوجو مطعم ست الكل"
                             className="w-[100px] h-[100px] mb-[0.5rem] object-contain"
                             width={100}
                             height={100}
@@ -108,7 +108,7 @@ export default function Footer() {
                         <div className={`flex flex-col items-center text-center justify-center max-w-[280px] ${language === 'ar' ? 'ml-auto mr-6 order-2' : 'mr-auto ml-6 order-1'}`}>
                             <Image
                                 src='/assets/Logo.webp'
-                                alt="SEC Restaurant Logo"
+                                alt="لوجو مطعم ست الكل"
                                 className="w-[100px] h-[100px] mb-[0.5rem] object-contain"
                                 width={100}
                                 height={100}
@@ -138,7 +138,7 @@ export default function Footer() {
                     <div className="Branding flex flex-col items-center text-center space-y-4">
                         <Image
                             src='/assets/Logo.webp'
-                            alt="SEC Restaurant Logo"
+                            alt="لوجو مطعم ست الكل"
                             className="w-[90px] h-[90px] object-contain"
                             width={90}
                             height={90}
