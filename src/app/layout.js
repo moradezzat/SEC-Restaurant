@@ -229,7 +229,7 @@ export default function RootLayout({ children }) {
 
         {/* OpenGraph */}
         <meta property="og:title" content="مطعم ست الكل" />
-        <meta property="og:description" content="مطعم ست الكل للأكلات المصرية" />
+        <meta property="og:description" content="جرب أفضل واشهي الأكلات من مطعم ست الكل في مصر. استمتع بالأكلات التقليدية زي الحواوشي, والملوخية, وطاجن المكرونة, والكفتة المشوية الي معمولة من مكونات طازجة" />
         <meta property="og:url" content="https://ssec.vercel.app" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ar_EG" />
