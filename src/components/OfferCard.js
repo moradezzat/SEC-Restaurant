@@ -63,9 +63,9 @@ export default function OfferCard({ Image: imageSrc, Name, Content, Price, IsAct
 
     return (
         <>
-            <OnlineOrderModal 
-                isOpen={isOnlineOrderModalOpen} 
-                onClose={() => setIsOnlineOrderModalOpen(false)} 
+            <OnlineOrderModal
+                isOpen={isOnlineOrderModalOpen}
+                onClose={() => setIsOnlineOrderModalOpen(false)}
             />
             <div className="dark:bg-[#212121] offer-card transition-colors duration-300 ease">
                 <Image
@@ -75,9 +75,9 @@ export default function OfferCard({ Image: imageSrc, Name, Content, Price, IsAct
                     width={500}
                     height={200}
                 />
-                <OfferBadge 
-                    discount={Discount} 
-                    isLimitedTime={IsLimitedTime} 
+                <OfferBadge
+                    discount={Discount}
+                    isLimitedTime={IsLimitedTime}
                     countdown={countdown}
                 />
                 <div className="p-6 flex flex-1 flex-col justify-between cursor-default">
