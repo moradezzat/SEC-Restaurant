@@ -1,11 +1,3 @@
-export function amPmTo24(timeStr) {
-  const [time, modifier] = timeStr.split(' ');
-  let [hours, minutes] = time.split(':').map(Number);
-  if (modifier.toUpperCase() === 'PM' && hours !== 12) hours += 12;
-  if (modifier.toUpperCase() === 'AM' && hours === 12) hours = 0;
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-}
-
 /*
 // Example usage for 24-hour working day:
 const WorkingHours = {
@@ -15,14 +7,22 @@ const WorkingHours = {
 };
 */
 
+export function amPmTo24(timeStr) {
+  const [time, modifier] = timeStr.split(' ');
+  let [hours, minutes] = time.split(':').map(Number);
+  if (modifier.toUpperCase() === 'PM' && hours !== 12) hours += 12;
+  if (modifier.toUpperCase() === 'AM' && hours === 12) hours = 0;
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
 const WorkingHours = {
-  Sunday:    { open24: true },
-  Monday:    { open24: true },
-  Tuesday:   { open24: true },
-  Wednesday: { open24: true },
-  Thursday:  { open24: true },
-  Friday:    { open24: true },
-  Saturday:  { open24: true },
+  Sunday:    { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Monday:    { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Tuesday:   { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Wednesday: { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Thursday:  { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Friday:    { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
+  Saturday:  { open: amPmTo24('01:00 PM'), close: amPmTo24('04:00 AM') },
 };
 
-export default WorkingHours; 
+export default WorkingHours;
