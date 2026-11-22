@@ -6,7 +6,8 @@
         "contact": "Contact us",
         "about": "About us",
         "open": "OPEN",
-        "closed": "CLOSED"
+        "closed": "CLOSED",
+        "order": "Order online"
     },
     "side_nav": {
         "title": "Settings",
@@ -35,7 +36,7 @@
     },
     "footer": {
         "branding": "SEC Restaurant",
-        "copyright": "\u00a9 2025 SEC Restaurant. All rights reserved.",
+        "copyright": "© 2025 SEC Restaurant. All rights reserved.",
         "open": "OPEN",
         "closed": "CLOSED",
         "locationSection": {
@@ -74,5 +75,226 @@
             "title": "Our Vision",
             "description": "To become the premier destination for authentic Egyptian cuisine, known for quality and innovation."
         }
+    },
+    "order_page": {
+        "title": "Order online",
+        "subtitle": "Pick your dishes, add your details, and we'll start preparing right away.",
+        "status_open": "We're taking orders",
+        "status_closed": "Orders are closed right now. We take orders from {open} to {close}.",
+        "loading": "Loading the menu...",
+        "load_error": "We couldn't load the menu. Please check your connection and try again.",
+        "retry": "Try again",
+        "empty": "The menu is empty right now. Please come back later.",
+        "extras": "Extras",
+        "quantity": "Quantity",
+        "add": "Add to order",
+        "added": "Added ✓",
+        "egp": "EGP",
+        "your_order": "Your order",
+        "cart_empty": "Your order is empty. Add something from the menu.",
+        "remove": "Remove",
+        "decrease": "Decrease quantity",
+        "increase": "Increase quantity",
+        "order_type": "Order type",
+        "dine_in": "Dine in",
+        "takeaway": "Takeaway",
+        "table": "Table",
+        "choose_table": "Choose your table",
+        "table_taken": "Taken",
+        "name": "Your name",
+        "name_placeholder": "e.g. Ahmed",
+        "phone": "Phone number",
+        "phone_placeholder": "01xxxxxxxxx",
+        "subtotal": "Subtotal",
+        "dine_in_fee": "Dine-in fee ({percent}%)",
+        "service_tax": "Service fee",
+        "total": "Total",
+        "estimate_note": "Estimated total. The final amount is confirmed when your order is placed.",
+        "place_order": "Place order",
+        "placing": "Placing your order...",
+        "success_title": "Order received!",
+        "success_number": "Your order number",
+        "success_keep": "Please keep this number and show it at the restaurant.",
+        "success_new": "Place another order",
+        "success_items": "Your order",
+        "last_order": "Your last order was #{number}.",
+        "errors": {
+            "name_required": "Please enter your name.",
+            "name_long": "That name is too long.",
+            "phone_invalid": "Please enter a valid phone number.",
+            "table_required": "Please choose a table.",
+            "cart_required": "Add at least one item to your order."
+        },
+        "notices": {
+            "closed": "Sorry, orders are closed right now. We take orders from {open} to {close}.",
+            "table_busy": "That table already has an open order. Please choose another table or ask our staff.",
+            "unavailable": "Something in your order is no longer available. We've updated the menu, please check your order.",
+            "validation": "Some details in your order aren't valid. Please check them and try again.",
+            "busy": "Too many requests. Please wait a moment and try again.",
+            "server": "Something went wrong on our side. Please try again in a moment.",
+            "network": "We couldn't reach the restaurant. Please try again. Pressing the button again won't create a duplicate order."
+        }
+    },
+    "privacy_policy": {
+        "title": "Privacy Policy",
+        "label": "Legal",
+        "effective_label": "Effective Date",
+        "effective_date": "November 20, 2026",
+        "toc_title": "Contents",
+        "sections": [
+            {
+                "title": "Introduction",
+                "before": [
+                    "This Privacy Policy explains how our restaurant backend system collects, processes, stores, and protects personal information when customers place orders through our ordering services.",
+                    "We respect your privacy and are committed to handling your information responsibly."
+                ],
+                "items": [],
+                "after": []
+            },
+            {
+                "title": "Information We Collect",
+                "before": [
+                    "When you use our ordering services, we may collect the following information:"
+                ],
+                "items": [
+                    {
+                        "label": "Customer Information:",
+                        "text": "Name and phone number."
+                    },
+                    {
+                        "label": "Order Information:",
+                        "text": "Ordered items, quantities, selected add-ons, prices, and order details."
+                    },
+                    {
+                        "label": "Order History:",
+                        "text": "Previous orders, order timestamps, and order statuses."
+                    },
+                    {
+                        "label": "Technical Information:",
+                        "text": "Information received through system requests and integrations, such as transaction identifiers and webhook events."
+                    }
+                ],
+                "after": [
+                    "We only collect information necessary to operate and manage the restaurant's ordering system."
+                ]
+            },
+            {
+                "title": "WhatsApp Bot Usage",
+                "before": [
+                    "Our WhatsApp bot is strictly intended for internal restaurant management purposes."
+                ],
+                "items": [
+                    {
+                        "text": "The bot is not intended for public use or customer interaction."
+                    },
+                    {
+                        "text": "It is exclusively operated by the restaurant owner."
+                    },
+                    {
+                        "text": "Only one authorized person, the restaurant owner, is intended to use the bot."
+                    },
+                    {
+                        "text": "The bot is used to receive order notifications, review incoming orders, and manage their statuses and related restaurant operations."
+                    }
+                ],
+                "after": [
+                    "Customers do not need to interact with the WhatsApp bot to place orders."
+                ]
+            },
+            {
+                "title": "How We Use Your Information",
+                "before": [
+                    "Collected information is used exclusively for legitimate restaurant operations, including:"
+                ],
+                "items": [
+                    {
+                        "text": "Processing and managing customer orders."
+                    },
+                    {
+                        "text": "Notifying restaurant management about incoming orders."
+                    },
+                    {
+                        "text": "Preparing and fulfilling orders."
+                    },
+                    {
+                        "text": "Maintaining order records and history."
+                    },
+                    {
+                        "text": "Managing menu items, availability, and additional options."
+                    },
+                    {
+                        "text": "Preventing duplicate orders and maintaining system reliability."
+                    }
+                ],
+                "after": []
+            },
+            {
+                "title": "Data Storage and Security",
+                "before": [
+                    "Order information is stored in a secured database used by the restaurant backend.",
+                    "We implement reasonable technical and organizational measures to protect stored information against unauthorized access, alteration, disclosure, or destruction.",
+                    "Access to management functionality is restricted to authorized personnel.",
+                    "However, no online system or method of electronic storage can guarantee absolute security."
+                ],
+                "items": [],
+                "after": []
+            },
+            {
+                "title": "Third-Party Services",
+                "before": [
+                    "Our system may rely on third-party providers to operate, including:"
+                ],
+                "items": [
+                    {
+                        "label": "WhatsApp / Meta:",
+                        "text": "For internal management notifications and related messaging functionality."
+                    },
+                    {
+                        "label": "Database and Hosting Providers:",
+                        "text": "For securely storing information and operating the backend infrastructure."
+                    }
+                ],
+                "after": [
+                    "These providers may process information as necessary to provide their respective services, subject to their own privacy policies and terms.",
+                    "We do not sell or rent customer personal information to third parties."
+                ]
+            },
+            {
+                "title": "Data Retention",
+                "before": [
+                    "Customer and order information may be retained for as long as reasonably necessary for restaurant operations, order history, recordkeeping, and other legitimate business purposes.",
+                    "Information that is no longer required may be deleted when appropriate."
+                ],
+                "items": [],
+                "after": []
+            },
+            {
+                "title": "Your Privacy Rights",
+                "before": [
+                    "You may request information about the personal data we hold about you, request corrections to inaccurate information, or request deletion of your personal information where applicable.",
+                    "Such requests can be submitted through the restaurant's official contact channels."
+                ],
+                "items": [],
+                "after": []
+            },
+            {
+                "title": "Changes to This Policy",
+                "before": [
+                    "We reserve the right to update this Privacy Policy when necessary to reflect changes in our services, technology, or applicable requirements.",
+                    "Any updates will be published with a revised effective date."
+                ],
+                "items": [],
+                "after": []
+            },
+            {
+                "title": "Contact Information",
+                "before": [
+                    "For questions, concerns, or requests regarding this Privacy Policy or your personal information, please contact the restaurant through its official communication channels."
+                ],
+                "items": [],
+                "after": []
+            }
+        ],
+        "acknowledgement": "By using our ordering services, you acknowledge that you have read and understood this Privacy Policy."
     }
 }
